@@ -12,6 +12,20 @@ The requirements are grouped into three categories:
 
 The tables below list the relevant properties, the classes they apply to, the expected vocabularies, and additional usage notes to support correct implementation.
 
+## Terminology bindings for the new optional properties {#new-property-terminology}
+
+The following bindings describe intended usage in Health-RI Metadata Vocabulary
+v0.4.1. Both properties are optional and repeatable on `dcat:Dataset`. Their
+suggested validation checks are opt-in and are not added to core conformance.
+
+| Property | Intended values | Validation limits |
+|---|---|---|
+| `hri:healthConditionOfInterest` | Suitable SNOMED CT or ICD-10 concept IRIs, typed `skos:Concept` | Identifier-pattern and typing checks do not establish existence, activity or clinical suitability. |
+| `hri:anatomicalLocationCovered` | SNOMED CT Anatomical structure (91723000) or a direct or indirect subclass, identified by IRI; no `skos:Concept` typing required | Hierarchy checks need separately trusted SNOMED evidence. OWL Full range entailment is not terminology validation. |
+
+See [validation of the additions](#validation-of-additions) for details. These
+bindings do not replace or restrict values of any existing property.
+
 ## Properties with controlled vocabularies that **MUST** be used for the listed properties
 
 <table>

@@ -95,12 +95,12 @@ Different parts of the specification are maintained in different locations.
 
 The documentation workflow has two related but distinct parts:
 
-1. Property-table generation (when the Excel workbook changes)  
+1. Property-table generation (when a property source changes)  
 
 ```mermaid
 flowchart LR
-    A{"Excel workbook changed?"}
-    A -- "Yes" --> B["Edit versioned workbook<br/>src/excel/HealthRI_v*.xlsx"]
+    A{"Property source changed?"}
+    A -- "Yes" --> B["Edit workbook or JSON additions/corrections"]
     A -- "No" --> F["Do not regenerate property tables"]
 
     B --> C["Run generator from src/python<br/>python Excel_To_Html.py"]
@@ -133,7 +133,7 @@ flowchart TD
     generatedTables --> validate
 
     validate --> pr["Open pull request targeting main"]
-    pr --> ciPr["GitHub Actions validation<br/>w3c/spec-prod"]
+    pr --> ciPr["GitHub Actions validation<br/>source tests and Bikeshed"]
 
     ciPr --> review{"Review outcome"}
     review -->|"Changes requested"| start
