@@ -1,22 +1,57 @@
-# This workflow converts your bikeshed (.bs) file to html and pushes to gh-pages
-
 name: CI
 
-# Controls when the action will run. Triggers the workflow on push or pull request
-# events but only for the main branch
 on:
   push:
-    branches: [ main ]
+    branches: [main, v2.1]
   pull_request:
-    branches: [ main ]
+    branches: [main, v2.1]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: documentation-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
-  main:
-    name: Build, Validate and Deploy
+  build:
+    name: Validate sources and build
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v2
-      - uses: w3c/spec-prod@v1
+      - uses: actions/checkout@v4
         with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - run: python -m pip install -r requirements.txt
+      - run: python -m unittest discover -s tests -v
+      - run: bikeshed spec index.bs index.html
+      - uses: actions/upload-artifact@v4
+        with:
+          name: documentation-preview
+          path: index.html
+
+  publish:
+    name: Publish main to Pages
+    needs: build
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/download-artifact@v4
+        with:
+          name: documentation-preview
+      - uses: w3c/spec-prod@v2
+        with:
+          TOOLCHAIN: static
+          SOURCE: index.html
           GH_PAGES_BRANCH: gh-pages
           VALIDATE_LINKS: false
           VALIDATE_MARKUP: false

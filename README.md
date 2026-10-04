@@ -12,6 +12,10 @@ The published documentation describes the Health-RI Core Metadata Schema for the
 
 ---
 
+## Forthcoming release
+
+The candidate is maintained on `v2.1`. See [RELEASING.md](RELEASING.md) for the current source list, pinned build environment, validation, publication behavior and coordinated release checklist. The released workbook is supplemented by `src/next-release-properties.json` and `src/property-overrides.json`; it is not the complete candidate source by itself.
+
 ## Purpose
 
 This repository is used to maintain and publish the human-readable technical specification of the Health-RI Core Metadata Schema.
@@ -81,8 +85,8 @@ Different parts of the specification are maintained in different locations.
 - Edit the upstream source, not generated output  
 - Do not manually edit `index.html`  
 - Do not manually edit generated `src/property/*.html` unless explicitly justified  
-- Treat the Excel workbook as the source of truth for property metadata  
-- Regenerate tables only when the Excel workbook changes  
+- Treat the Excel workbook plus the documented JSON additions/corrections as the source of truth for candidate property metadata
+- Regenerate tables when the workbook, JSON additions/corrections, link configuration or generator changes
 - Publication is handled via GitHub Actions, not manual HTML edits  
 
 ---
@@ -186,5 +190,5 @@ If changes are not visible:
 - check the GitHub Actions workflow runs and confirm they completed successfully  
 - verify that the changes were merged into the `main` branch  
 - check the `gh-pages` branch to confirm the updated content was deployed  
-- ensure that generated files (e.g. `index.html`) were included in the commit  
+- ensure that regenerated `src/property/*.html` files were included in the source commit; `index.html` is built and deployed by CI
 - refresh the page and clear your browser cache if necessary  
