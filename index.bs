@@ -6,7 +6,7 @@ level: none
 TR: https://w3id.org/health-ri/metadata/releases/latest
 URL: https://health-ri.github.io/metadata-documentation/
 Previous Version: https://w3id.org/health-ri/metadata/releases
-Status Text: status text
+Status Text: Draft for the forthcoming minor release; version and date pending.
 Repository: w3id.org/health-ri/metadata/git
 Editor: Bruna dos Santos Vieira
 Former Editor: Inês de Oliveira Coelho Henriques
@@ -47,6 +47,10 @@ path: src/chapter/3-purpose-and-audience.md
 
 <pre class=include>
 path: src/chapter/4-introduction.md
+</pre>
+
+<pre class=include>
+path: src/chapter/11-next-release.md
 </pre>
 
 <pre class=include>

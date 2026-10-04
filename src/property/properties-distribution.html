@@ -155,7 +155,12 @@ If IANA media types do not sufficiently describe the format, use "format" to des
       <td>healthdcatap:retentionperiod</td>
       <td>dct:PeriodOfTime</td>
       <td>0..1</td>
-      <td>This property makes use of the class dct:PeriodOfTime, in which a start and end date should be provided.</td>
+      <td>Indicate with this property in case the Distribution is only available for secondary use for a specific period of time (e.g. due to data protection, contractual, or project constraints).
+This property makes use of the class dct:PeriodOfTime, in which a start and end date can be provided.
+
+If the Distribution is available indefinitely, leave the property empty (cardinality is 0..1; it is only meaningful when a retention limit applies).
+If only a start is known, provide dcat:startDate only (open-ended interval, as allowed by dct:PeriodOfTime).
+If a limit is known, provide both dcat:startDate and dcat:endDate.</td>
     </tr>
     <tr>
       <td>rights</td>

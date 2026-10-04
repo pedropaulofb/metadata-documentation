@@ -1,0 +1,17 @@
+{
+  "Dataset": {
+    "healthdcatap:retentionPeriod": {
+      "Usage note": "Indicate with this property in case the Dataset is only available for secondary use for a specific period of time (e.g. due to data protection, contractual, or project constraints).\nThis property makes use of the class dct:PeriodOfTime, in which a start and end date can be provided.\n\nIf the Dataset is available indefinitely, leave the property empty (cardinality is 0..1; it is only meaningful when a retention limit applies).\nIf only a start is known, provide dcat:startDate only (open-ended interval, as allowed by dct:PeriodOfTime).\nIf a limit is known, provide both dcat:startDate and dcat:endDate."
+    }
+  },
+  "DataService": {
+    "dcat:endPointURL": {
+      "Property URI": "dcat:endpointURL"
+    }
+  },
+  "Distribution": {
+    "healthdcatap:retentionperiod": {
+      "Usage note": "Indicate with this property in case the Distribution is only available for secondary use for a specific period of time (e.g. due to data protection, contractual, or project constraints).\nThis property makes use of the class dct:PeriodOfTime, in which a start and end date can be provided.\n\nIf the Distribution is available indefinitely, leave the property empty (cardinality is 0..1; it is only meaningful when a retention limit applies).\nIf only a start is known, provide dcat:startDate only (open-ended interval, as allowed by dct:PeriodOfTime).\nIf a limit is known, provide both dcat:startDate and dcat:endDate."
+    }
+  }
+}

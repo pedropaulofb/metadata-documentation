@@ -59,7 +59,7 @@
     "dcat:distribution": "https://www.w3.org/TR/vocab-dcat-3/#Property:distribution",
     "dcat:downloadURL": "https://www.w3.org/TR/vocab-dcat-3/#Property:downloadURL",
     "dcat:endDate": "https://www.w3.org/TR/vocab-dcat-3/#Property:endDate",
-    "dcat:endPointURL": "https://www.w3.org/TR/vocab-dcat-3/#Property:endpointURL",
+    "dcat:endpointURL": "https://www.w3.org/TR/vocab-dcat-3/#Property:endpointURL",
     "dcat:endpointDescription": "https://www.w3.org/TR/vocab-dcat-3/#Property:endpointDescription",
     "dcat:hadRole": "https://www.w3.org/TR/vocab-dcat-3/#Property:hadRole",
     "dcat:hasVersion": "https://www.w3.org/TR/vocab-dcat-3/#Property:hasVersion",

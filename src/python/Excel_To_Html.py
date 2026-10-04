@@ -6,8 +6,9 @@ from openpyxl import load_workbook
 from urllib.parse import urlparse, urlunparse
 
 
-EXCEL_FILE_PATH = "../excel/HealthRI_v2.0.3.xlsx"
-OUTPUT_PATH = Path("../property")
+SOURCE_PATH = Path(__file__).resolve().parents[1]
+EXCEL_FILE_PATH = SOURCE_PATH / "excel/HealthRI_v2.0.3.xlsx"
+OUTPUT_PATH = SOURCE_PATH / "property"
 LINKS_FILE = Path(__file__).parent / "links.json"
 
 
@@ -267,6 +268,9 @@ def main():
     with open(LINKS_FILE, "r", encoding="utf-8") as f:
         links = json.load(f)
 
+    release = json.loads((SOURCE_PATH / "next-release-properties.json").read_text())
+    overrides = json.loads((SOURCE_PATH / "property-overrides.json").read_text())
+
     for _, class_row in classes_df.iterrows():
         sheet_name = class_row["sheet_name"]
 
@@ -285,6 +289,15 @@ def main():
         df = df[cols]
         df = merge_vocab_rows(df)
 
+        # Keep the released workbook unchanged. Explicit source overrides record
+        # next-release corrections; new properties are shared with the schema.
+        for uri, fields in overrides.get(sheet_name, {}).items():
+            matches = df["Property URI"] == uri
+            if matches.sum() != 1:
+                raise ValueError(f"Expected exactly one {sheet_name}/{uri}")
+            for field, value in fields.items():
+                df.loc[matches, field] = value
+
         url_map = extract_urls_per_property(sheet_name)
 
         df["Usage note"] = df.apply(
@@ -294,8 +307,24 @@ def main():
 
         df = df.drop(columns=["Controlled vocabluary (if applicable)"])
 
+        if sheet_name == "Dataset":
+            for prop in release["properties"]:
+                if prop["curie"] in set(df["Property URI"]):
+                    raise ValueError(f"Duplicate release property: {prop['curie']}")
+                row = dict(zip(df.columns, [prop["label"], prop["definition"],
+                           prop["curie"], prop["range"], prop["cardinality"],
+                           prop["usage"] + '<br>Source: ' + make_clickable(prop["source"])]))
+                positions = [i for i, label in enumerate(df["Property label"])
+                             if str(label).lower() > prop["label"].lower()]
+                position = positions[0] if positions else len(df)
+                df = pd.concat([df.iloc[:position], pd.DataFrame([row]), df.iloc[position:]],
+                               ignore_index=True)
+
         output_file = OUTPUT_PATH / f"properties-{sheet_name.lower()}.html"
-        df.to_html(output_file, index=False, escape=False)
+        # pandas escapes embedded newlines even when HTML escaping is disabled.
+        # Restore them to preserve the repository's existing readable markup.
+        output_file.write_text(df.to_html(index=False, escape=False).replace('\\n', '\n'),
+                               encoding="utf-8")
 
         print(f"Generated {output_file}")
 
