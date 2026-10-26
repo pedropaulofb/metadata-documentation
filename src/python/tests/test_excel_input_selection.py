@@ -15,7 +15,7 @@ from unittest.mock import patch
 from openpyxl import Workbook
 
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[3]
 SCRIPT = ROOT / "src/python/Excel_To_Html.py"
 SPEC = importlib.util.spec_from_file_location("excel_generator", SCRIPT)
 generator = importlib.util.module_from_spec(SPEC)
