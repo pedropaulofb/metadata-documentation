@@ -1,4 +1,5 @@
 from pathlib import Path
+import argparse
 import pandas as pd
 import re
 import json
@@ -6,9 +7,50 @@ from openpyxl import load_workbook
 from urllib.parse import urlparse, urlunparse
 
 
-EXCEL_FILE_PATH = "../excel/HealthRI_v2.1.0.xlsx"
-OUTPUT_PATH = Path("../property")
-LINKS_FILE = Path(__file__).parent / "links.json"
+ROOT = Path(__file__).resolve().parents[2]
+EXCEL_DIRECTORY = ROOT / "src/excel"
+OUTPUT_PATH = ROOT / "src/property"
+LINKS_FILE = Path(__file__).resolve().parent / "links.json"
+
+
+def select_workbook(excel_path=None):
+    """Resolve explicit paths from the repository root, or select by mtime."""
+    if excel_path is not None:
+        workbook = Path(excel_path)
+        if not workbook.is_absolute():
+            workbook = ROOT / workbook
+        workbook = workbook.resolve()
+
+        if not workbook.exists():
+            raise ValueError(f"Workbook does not exist: {workbook}")
+        if workbook.is_dir():
+            raise ValueError(f"Workbook path points to a directory: {workbook}")
+        if not workbook.is_file():
+            raise ValueError(f"Workbook path is not a regular file: {workbook}")
+        return workbook
+
+    candidates = [
+        (path, path.stat().st_mtime_ns)
+        for path in EXCEL_DIRECTORY.iterdir()
+        if path.is_file()
+        and path.suffix.lower() == ".xlsx"
+        and not path.name.startswith("~$")
+    ]
+    if not candidates:
+        raise ValueError(
+            f"No eligible .xlsx workbooks found in {EXCEL_DIRECTORY}. "
+            "Use --excel PATH to select a workbook explicitly."
+        )
+
+    latest_mtime = max(mtime for _, mtime in candidates)
+    latest = [path for path, mtime in candidates if mtime == latest_mtime]
+    if len(latest) > 1:
+        names = ", ".join(sorted(path.name for path in latest))
+        raise ValueError(
+            f"Workbooks share the most recent modification timestamp: {names}. "
+            "Use --excel PATH to select a workbook explicitly."
+        )
+    return latest[0].resolve()
 
 
 # ========================
@@ -102,8 +144,8 @@ def detect_requirement(text):
 # EXCEL URL EXTRACTION
 # ========================
 
-def extract_urls_per_property(sheet_name):
-    wb = load_workbook(EXCEL_FILE_PATH)
+def extract_urls_per_property(sheet_name, excel_file_path):
+    wb = load_workbook(excel_file_path)
     ws = wb[sheet_name]
 
     headers = [c.value for c in ws[1]]
@@ -307,15 +349,42 @@ def build_usage_note(row, sheet_name, url_map, links):
 # MAIN
 # ========================
 
-def main():
+def main(argv=None):
+    parser = argparse.ArgumentParser(
+        description="Generate HTML property tables from an Excel workbook."
+    )
+    parser.add_argument(
+        "--excel",
+        metavar="PATH",
+        help=(
+            "Workbook path (absolute or relative to the repository root). "
+            "Defaults to the most recently modified .xlsx file in src/excel/."
+        )
+    )
+    args = parser.parse_args(argv)
+
+    try:
+        excel_file_path = select_workbook(args.excel)
+    except (OSError, ValueError) as exc:
+        parser.error(f"Cannot select Excel workbook: {exc}")
+
+    mode = "Explicit" if args.excel is not None else "Automatic (most recently modified)"
+    print(f"Excel input mode: {mode}")
+    print(f"Selected workbook: {excel_file_path}")
+
+    try:
+        classes_df = pd.read_excel(
+            excel_file_path,
+            sheet_name="classes"
+        )
+    except Exception as exc:
+        parser.error(
+            f"Cannot read workbook {excel_file_path} (worksheet 'classes'): {exc}"
+        )
+
     OUTPUT_PATH.mkdir(
         parents=True,
         exist_ok=True
-    )
-
-    classes_df = pd.read_excel(
-        EXCEL_FILE_PATH,
-        sheet_name="classes"
     )
 
     with open(
@@ -330,7 +399,7 @@ def main():
         sheet_name = class_row["sheet_name"]
 
         df = pd.read_excel(
-            EXCEL_FILE_PATH,
+            excel_file_path,
             sheet_name=sheet_name
         )
 
@@ -349,7 +418,8 @@ def main():
         df = merge_vocab_rows(df)
 
         url_map = extract_urls_per_property(
-            sheet_name
+            sheet_name,
+            excel_file_path
         )
 
         df["Usage note"] = df.apply(
