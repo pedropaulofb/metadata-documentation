@@ -154,7 +154,7 @@ class GeneratorCommandTests(unittest.TestCase):
             dataset = wb.create_sheet("Dataset")
             dataset.append([
                 "Property label", "Definition", "Property URI", "Range",
-                "Cardinality", "Usage note", "Controlled vocabluary (if applicable)",
+                "Cardinality", "Usage note", "Controlled vocabulary (if applicable)",
             ])
             dataset.append([
                 "Example", "Example definition", "ex:example", "rdfs:Literal",

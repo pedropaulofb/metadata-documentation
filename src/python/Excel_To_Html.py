@@ -11,6 +11,15 @@ ROOT = Path(__file__).resolve().parents[2]
 EXCEL_DIRECTORY = ROOT / "src/excel"
 OUTPUT_PATH = ROOT / "src/property"
 LINKS_FILE = Path(__file__).resolve().parent / "links.json"
+PROPERTY_COLUMNS = [
+    "Property label",
+    "Definition",
+    "Property URI",
+    "Range",
+    "Cardinality",
+    "Usage note",
+    "Controlled vocabulary (if applicable)"
+]
 
 
 def select_workbook(excel_path=None):
@@ -51,6 +60,44 @@ def select_workbook(excel_path=None):
             "Use --excel PATH to select a workbook explicitly."
         )
     return latest[0].resolve()
+
+
+def normalize_headers(headers, sheet_name, required_columns):
+    """Normalise whitespace only; required headings must occur exactly once."""
+    headers = [
+        " ".join(header.split()) if isinstance(header, str) else header
+        for header in headers
+    ]
+    errors = []
+    for required in required_columns:
+        count = headers.count(required)
+        if count == 0:
+            errors.append(f"Required column {required!r} was not found.")
+        elif count > 1:
+            errors.append(
+                f"Required column {required!r} occurs {count} times after "
+                "whitespace normalisation."
+            )
+    if errors:
+        available = "\n".join(f"- {header}" for header in headers)
+        raise ValueError(
+            f"Error processing {sheet_name}:\n" + "\n".join(errors)
+            + f"\nAvailable columns:\n{available}"
+        )
+    return headers
+
+
+def read_worksheet(excel_file_path, sheet_name, required_columns):
+    # Inspect the raw first row before pandas can rename duplicate headings.
+    header_row = pd.read_excel(
+        excel_file_path, sheet_name=sheet_name, header=None, nrows=1
+    )
+    headers = [] if header_row.empty else header_row.iloc[0].tolist()
+    normalize_headers(headers, sheet_name, required_columns)
+
+    df = pd.read_excel(excel_file_path, sheet_name=sheet_name)
+    df.columns = normalize_headers(df.columns, sheet_name, required_columns)
+    return df
 
 
 # ========================
@@ -148,8 +195,10 @@ def extract_urls_per_property(sheet_name, excel_file_path):
     wb = load_workbook(excel_file_path)
     ws = wb[sheet_name]
 
-    headers = [c.value for c in ws[1]]
-    vocab_idx = headers.index("Controlled vocabluary (if applicable)") + 1
+    headers = normalize_headers(
+        [c.value for c in ws[1]], sheet_name, PROPERTY_COLUMNS
+    )
+    vocab_idx = headers.index("Controlled vocabulary (if applicable)") + 1
     uri_idx = headers.index("Property URI") + 1
 
     url_map = {}
@@ -183,20 +232,20 @@ def merge_vocab_rows(df):
     current = None
 
     for _, row in df.iterrows():
-        vocab = row["Controlled vocabluary (if applicable)"]
+        vocab = row["Controlled vocabulary (if applicable)"]
 
         is_cont = (
             pd.notna(vocab)
             and all(
                 pd.isna(v) or str(v).strip() == ""
                 for col, v in row.items()
-                if col != "Controlled vocabluary (if applicable)"
+                if col != "Controlled vocabulary (if applicable)"
             )
         )
 
         if is_cont and current is not None:
-            existing = current["Controlled vocabluary (if applicable)"]
-            current["Controlled vocabluary (if applicable)"] = (
+            existing = current["Controlled vocabulary (if applicable)"]
+            current["Controlled vocabulary (if applicable)"] = (
                 str(existing) + "\n" + str(vocab)
                 if pd.notna(existing)
                 else str(vocab)
@@ -248,7 +297,7 @@ def build_usage_note(row, sheet_name, url_map, links):
     if not isinstance(base, str) or not base.strip():
         base = "N.A."
 
-    vocab = row["Controlled vocabluary (if applicable)"]
+    vocab = row["Controlled vocabulary (if applicable)"]
     prop = row["Property URI"]
 
     if not isinstance(vocab, str) or not vocab.strip():
@@ -373,9 +422,10 @@ def main(argv=None):
     print(f"Selected workbook: {excel_file_path}")
 
     try:
-        classes_df = pd.read_excel(
+        classes_df = read_worksheet(
             excel_file_path,
-            sheet_name="classes"
+            "classes",
+            ["sheet_name"]
         )
     except Exception as exc:
         parser.error(
@@ -398,22 +448,12 @@ def main(argv=None):
 
         sheet_name = class_row["sheet_name"]
 
-        df = pd.read_excel(
-            excel_file_path,
-            sheet_name=sheet_name
-        )
+        try:
+            df = read_worksheet(excel_file_path, sheet_name, PROPERTY_COLUMNS)
+        except ValueError as exc:
+            parser.error(str(exc))
 
-        cols = [
-            "Property label",
-            "Definition",
-            "Property URI",
-            "Range",
-            "Cardinality",
-            "Usage note",
-            "Controlled vocabluary (if applicable)"
-        ]
-
-        df = df[cols]
+        df = df[PROPERTY_COLUMNS]
 
         df = merge_vocab_rows(df)
 
@@ -434,7 +474,7 @@ def main(argv=None):
 
         df = df.drop(
             columns=[
-                "Controlled vocabluary (if applicable)"
+                "Controlled vocabulary (if applicable)"
             ]
         )
 
