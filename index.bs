@@ -1,45 +1,72 @@
+<!-- Document identity and version -->
 <pre class='metadata'>
 Title: Health-RI Metadata Model
 Shortname: Hri-spec
-status: iso/TS
-level: none
-TR: https://w3id.org/health-ri/metadata/releases/latest
-URL: https://health-ri.github.io/metadata-documentation/
-Previous Version: https://w3id.org/health-ri/metadata/releases
+Status: iso/TS
+Level: none
 Status Text: Health-RI core metadata schema v2.1.0.
-Repository: w3id.org/health-ri/metadata/git
-Editor: Bruna dos Santos Vieira
-Former Editor: Inês de Oliveira Coelho Henriques
-Former Editor: César Bernabé
-Editor: Kees Burger
-Former Editor: Patrick Dekker
-Editor: Joost Daams
-Former Editor: Milou de Jong
-Editor: Ana Konrad
-Editor: Hannah Neikes
-Editor: Reinier Groeneveld
-Editor: Niek van Ulzen
-Editor: Pedro Paulo F. Barcelos
-Former Editor: Dena Tahvildari
-Former Editor: Xiaofeng Liao
-Former Editor: Mark Janse
-Former Editor: Junda Huang
-Former Editor: Luiz Bonino
+</pre>
+
+<!-- Publication and repository PIDs -->
+<pre class='metadata'>
+TR: https://w3id.org/health-ri/metadata/releases/latest
+URL: https://w3id.org/health-ri/metadata/docs
+Previous Version: https://w3id.org/health-ri/metadata/releases
+Repository: https://w3id.org/health-ri/metadata/git
+</pre>
+
+<!-- Abstract -->
+<pre class='metadata'>
+Abstract: <img src="https://raw.githubusercontent.com/Health-RI/metadata-documentation/main/src/images/HRI_Logo.png" alt="Health-RI Logo" title="Health-RI Logo" width="300"> <br/> The National Health Data Catalogue uses a core metadata schema: a set of minimal, common metadata elements for describing each resource (e.g., a dataset). The schema defines metadata requirements that support access to and reuse of information across Health-RI nodes via the National Catalogue. This document provides the technical specification for the Health-RI core metadata schema.
+</pre>
+
+<!-- Current editors: ORCID URLs are used as personal profile links. -->
+<pre class='metadata'>
+Editor: Bruna dos Santos Vieira, https://orcid.org/0000-0001-7893-0505
+Editor: Kees Burger, https://orcid.org/0000-0002-5437-779X
+Editor: Joost Daams, https://orcid.org/0000-0002-8025-4961
+Editor: Ana Konrad, https://orcid.org/0009-0002-3089-9558
+Editor: Hannah K. Neikes, https://orcid.org/0000-0001-8306-0380
+Editor: Reinier Groeneveld, https://orcid.org/0009-0006-1783-9082
+Editor: Niek van Ulzen, https://orcid.org/0000-0003-0771-3516
+Editor: Pedro Paulo Favato Barcelos, https://orcid.org/0000-0003-2736-7817
+</pre>
+
+<!-- Former editors -->
+<pre class='metadata'>
+Former Editor: Inês de Oliveira Coelho Henriques, https://orcid.org/0000-0002-0756-2722
+Former Editor: César Henrique Bernabé, https://orcid.org/0000-0003-1795-5930
+Former Editor: Patrick Dekker, https://orcid.org/0000-0002-4970-0038
+Former Editor: Milou de Jong, https://orcid.org/0009-0003-7082-3053
+Former Editor: Dena Tahvildari, https://orcid.org/0000-0001-9144-7219
+Former Editor: Xiaofeng Liao, https://orcid.org/0000-0002-4706-1084
+Former Editor: Markus H.A. Janse, https://orcid.org/0000-0002-0604-1204
+Former Editor: Junda Huang, https://orcid.org/0000-0002-1246-5759
+Former Editor: Luiz Olavo Bonino da Silva Santos, https://orcid.org/0000-0002-1164-1351
+</pre>
+
+<!-- Feedback: the Health-RI PID configuration has no routes for these pages. -->
+<pre class='metadata'>
 Issue Tracking: Report a bug https://github.com/Health-RI/health-ri-metadata/blob/develop/CONTRIBUTING.md#i-want-to-report-a-bug
 Issue Tracking: Open new issues https://github.com/Health-RI/health-ri-metadata/issues/new
 Issue Tracking: Status reported issues https://github.com/Health-RI/health-ri-metadata/issues
+</pre>
+
+<!-- Licence and rendering options -->
+<pre class='metadata'>
 Logo: health-ri logo
 !License: CC-BY-4.0
 Boilerplate: copyright no, conformance off, references off
 Max ToC Depth: 4
-Abstract: <img src="https://raw.githubusercontent.com/Health-RI/metadata-documentation/main/src/images/HRI_Logo.png" alt="Health-RI Logo" title="Health-RI Logo" width="300"> <br/> The National Health Data Catalogue uses a core metadata schema: a set of minimal, common metadata elements for describing each resource (e.g., a dataset). The schema defines metadata requirements that support access to and reuse of information across Health-RI nodes via the National Catalogue. This document provides the technical specification for the Health-RI core metadata schema.
 Markup Shorthands: markdown yes, css no
 </pre>
 
+<!-- Shared table styling -->
 <pre class=include>
 path: src/table/style-tables-general.md
 </pre>
 
+<!-- Purpose, audience, and introduction -->
 <pre class=include>
 path: src/chapter/3-purpose-and-audience.md
 </pre>
@@ -48,22 +75,27 @@ path: src/chapter/3-purpose-and-audience.md
 path: src/chapter/4-introduction.md
 </pre>
 
+<!-- Persistent identifiers and permanent URLs -->
 <pre class=include>
 path: src/chapter/1-permanent-urls.md
 </pre>
 
+<!-- Class overview and structure -->
 <pre class=include>
 path: src/chapter/5-classtext.md
 </pre>
 
+<!-- Main classes -->
 <pre class=include>
 path: src/chapter/6-classes-main.md
 </pre>
 
+<!-- Supportive classes -->
 <pre class=include>
 path: src/chapter/7-classes-supportive.md
 </pre>
 
+<!-- Controlled vocabularies -->
 <pre class=include>
 path: src/chapter/10-controlled-vocabularies.md
 </pre>
