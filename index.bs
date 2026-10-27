@@ -22,8 +22,6 @@ Abstract: <img src="https://raw.githubusercontent.com/Health-RI/metadata-documen
 
 <!-- Current editors: ORCID URLs are used as personal profile links. -->
 <pre class='metadata'>
-Editor: Kees Burger, https://orcid.org/0000-0002-5437-779X
-Editor: Joost Daams, https://orcid.org/0000-0002-8025-4961
 Editor: Ana Konrad, https://orcid.org/0009-0002-3089-9558
 Editor: Hannah K. Neikes, https://orcid.org/0000-0001-8306-0380
 Editor: Reinier Groeneveld, https://orcid.org/0009-0006-1783-9082
@@ -34,6 +32,8 @@ Editor: Pedro Paulo Favato Barcelos, https://orcid.org/0000-0003-2736-7817
 <!-- Former editors -->
 <pre class='metadata'>
 Former Editor: Bruna dos Santos Vieira, https://orcid.org/0000-0001-7893-0505
+Former Editor: Kees Burger, https://orcid.org/0000-0002-5437-779X
+Former Editor: Joost Daams, https://orcid.org/0000-0002-8025-4961
 Former Editor: Inês de Oliveira Coelho Henriques, https://orcid.org/0000-0002-0756-2722
 Former Editor: César Henrique Bernabé, https://orcid.org/0000-0003-1795-5930
 Former Editor: Patrick Dekker, https://orcid.org/0000-0002-4970-0038
