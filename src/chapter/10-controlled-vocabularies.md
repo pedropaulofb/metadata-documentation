@@ -1,4 +1,4 @@
-# Controlled Vocabularies
+# Controlled Vocabularies # {#controlled-vocabularies}
 
 This section lists properties whose values are expected to come from specified sources. These sources are typically controlled vocabularies, but may also be ontologies, authority tables, or prescribed value lists (such as licences or identifier schemes).
 
@@ -12,7 +12,7 @@ The requirements are grouped into three categories:
 
 The tables below list the relevant properties, the classes to which they apply, the expected vocabularies, and additional usage notes for implementation.
 
-## Properties with controlled vocabularies that **MUST** be used for the listed properties
+## Properties with controlled vocabularies that **MUST** be used for the listed properties ## {#properties-with-controlled-vocabularies-that-must-be-used-for-the-listed-properties}
 
 <table>
   <thead>
@@ -356,7 +356,7 @@ The tables below list the relevant properties, the classes to which they apply, 
   </tbody>
 </table>
 
-## Properties with **AT LEAST 1** value from the controlled vocabularies
+## Properties with **AT LEAST 1** value from the controlled vocabularies ## {#properties-with-at-least-1-value-from-the-controlled-vocabularies}
 
 <table>
   <thead>
@@ -379,7 +379,7 @@ The tables below list the relevant properties, the classes to which they apply, 
   </tbody>
 </table>
 
-## Properties with controlled vocabularies that **MAY** be used for the listed properties
+## Properties with controlled vocabularies that **MAY** be used for the listed properties ## {#properties-with-controlled-vocabularies-that-may-be-used-for-the-listed-properties}
 
 <table>
   <thead>

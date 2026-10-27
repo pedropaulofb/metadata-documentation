@@ -1,4 +1,4 @@
-### [Identifier](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Identifier)
+### [Identifier](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Identifier) ### {#identifier}
 <table class="no-style">   
   <thead> 
     <tr> 

@@ -1,4 +1,4 @@
-### [Relationship](https://w3c.github.io/dxwg/dcat/#Class:Relationship)
+### [Relationship](https://w3c.github.io/dxwg/dcat/#Class:Relationship) ### {#relationship}
 <table class="no-style">   
   <thead> 
     <tr> 

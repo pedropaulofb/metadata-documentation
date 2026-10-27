@@ -1,4 +1,4 @@
-### [Agent](http://xmlns.com/foaf/spec/#term_Agent)
+### [Agent](http://xmlns.com/foaf/spec/#term_Agent) ### {#agent}
 <table class="no-style">   
   <thead> 
     <tr> 
