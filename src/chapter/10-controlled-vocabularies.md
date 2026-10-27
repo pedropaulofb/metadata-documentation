@@ -32,7 +32,7 @@ The tables below list the relevant properties, the classes to which they apply, 
           http://publications.europa.eu/resource/authority/access-right
         </a>
       </td>
-      <td>The EU authority table, containing values for access rights of the Dataset. You can choose between the values PUBLIC, NON_PUBLIC and RESTRICTED, even though in the vocabulary itself more values are included. Depending on the value that is choosed here, one of the three different versions of HealthDCAT-AP will be used.</td>
+      <td>The EU authority table, containing values for access rights of the Dataset. You can choose between the values PUBLIC, NON_PUBLIC and RESTRICTED, even though in the vocabulary itself more values are included. Depending on the value that is chosen here, one of the three different versions of HealthDCAT-AP will be used.</td>
     </tr>
 
     <tr>
@@ -65,7 +65,7 @@ The tables below list the relevant properties, the classes to which they apply, 
           https://w3c.github.io/dpv/2.0/pd/
         </a>
       </td>
-      <td>For this propery, you should specify the type(s) of personal data that your dataset contains or processes. These types are defined in the DPV ontology and include classes such as dpv:Age, dpv:BirthDate and dpv:Gender. Choose the classes that describe personal data inside your Dataset.</td>
+      <td>For this property, you should specify the type(s) of personal data that your dataset contains or processes. These types are defined in the DPV ontology and include classes such as dpv:Age, dpv:BirthDate and dpv:Gender. Choose the classes that describe personal data inside your Dataset.</td>
     </tr>
 
     <tr>
@@ -131,7 +131,7 @@ The tables below list the relevant properties, the classes to which they apply, 
           https://publications.europa.eu/resource/authority/country
         </a>
       </td>
-      <td>Choose country of the Catalogue from the EU authority table.</td>
+      <td>Choose the country of the Catalogue from the EU authority table.</td>
     </tr>
 
     <tr>
@@ -144,7 +144,7 @@ The tables below list the relevant properties, the classes to which they apply, 
         <a href="https://standaarden.overheid.nl/tooi/waardelijsten/">TOOI</a>,
         <a href="https://www.wikidata.org/wiki/Wikidata:Main_Page">Wikidata</a>
       </td>
-      <td>Provide an ORCID identifier for person, ROR for organization. If these are not available, it is also allowed to use ISNI, TOOI or Wikidata.</td>
+      <td>Provide an ORCID identifier for a person, ROR for an organization. If these are not available, it is also allowed to use ISNI, TOOI or Wikidata.</td>
     </tr>
 
     <tr>
@@ -265,7 +265,7 @@ The tables below list the relevant properties, the classes to which they apply, 
           http://publications.europa.eu/resource/authority/frequency
         </a>
       </td>
-      <td>Choose the frequency with which items are added to a collectio from the EU authority table.</td>
+      <td>Choose the frequency with which items are added to a collection from the EU authority table.</td>
     </tr>
 
     <tr>
@@ -287,7 +287,7 @@ The tables below list the relevant properties, the classes to which they apply, 
           http://publications.europa.eu/resource/authority/file-type
         </a>
       </td>
-      <td>Choose the format of the data service from the EU athority table.</td>
+      <td>Choose the format of the data service from the EU authority table.</td>
     </tr>
 
     <tr>
@@ -340,7 +340,7 @@ The tables below list the relevant properties, the classes to which they apply, 
         <a href="https://www.iana.org/assignments/link-relations/link-relations.xhtml">IANA Link Relations</a>,
         <a href="https://standards.iso.org/iso/19115/resources/Codelists/gml/DS_AssociationTypeCode.xml">ISO Codelist</a>
       </td>
-      <td>Choose the role of the related resource from either the IANA link relations or ISO Association type code list.</td>
+      <td>Choose the role of the related resource from either the IANA link relations or the ISO Association type code list.</td>
     </tr>
 
     <tr>
@@ -351,7 +351,7 @@ The tables below list the relevant properties, the classes to which they apply, 
           https://spdx.org/rdf/terms/#d4e2129
         </a>
       </td>
-      <td>Choose one of the subclasses of spdx:ChecksumAlgorithm class to indicate the algorithm used.</td>
+      <td>Choose one of the subclasses of the spdx:ChecksumAlgorithm class to indicate the algorithm used.</td>
     </tr>
   </tbody>
 </table>
