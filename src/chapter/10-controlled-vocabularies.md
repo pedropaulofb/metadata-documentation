@@ -120,7 +120,7 @@ The tables below list the relevant properties, the classes to which they apply, 
           https://definities.geostandaarden.nl/dcat-ap-nl/nl/
         </a>
       </td>
-      <td>Choose a license that is applicable to your Catalog. You can choose one from the list provided by DCAT-AP NL, which uses Creative Commons licenses. If you need help choosing one, it is recommended to use the chooser tool from Creative Commons (https://creativecommons.org/chooser/).</td>
+      <td>Choose a license that is applicable to your Catalog. You can choose one from the DCAT-AP NL provided list, which uses Creative Commons licenses. If you need help choosing one, it is recommended to use the chooser tool from Creative Commons (https://creativecommons.org/chooser/).</td>
     </tr>
 
     <tr>
@@ -309,7 +309,7 @@ The tables below list the relevant properties, the classes to which they apply, 
           https://definities.geostandaarden.nl/dcat-ap-nl/nl/
         </a>
       </td>
-      <td>Choose a license that is applicable to your data service. You can choose one from the list provided by DCAT-AP NL, which uses Creative Commons licenses. If you need help choosing one, it is recommended to use the chooser tool from Creative Commons (https://creativecommons.org/chooser/).</td>
+      <td>Choose a license that is applicable to your data service. You can choose one from the DCAT-AP NL provided list, which uses Creative Commons licenses. If you need help choosing one, it is recommended to use the chooser tool from Creative Commons (https://creativecommons.org/chooser/).</td>
     </tr>
 
     <tr>
