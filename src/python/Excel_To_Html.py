@@ -455,6 +455,10 @@ def main(argv=None):
 
         df = df[PROPERTY_COLUMNS]
 
+        if df.replace(r"^\s*$", pd.NA, regex=True).dropna(how="all").empty:
+            print(f"Skipped {sheet_name}: no properties to document")
+            continue
+
         df = merge_vocab_rows(df)
 
         url_map = extract_urls_per_property(

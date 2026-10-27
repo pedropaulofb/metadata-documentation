@@ -201,6 +201,72 @@ class ExcelHeaderTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "was not found"):
             generator.extract_urls_per_property("Dataset", path)
 
+    def test_empty_property_worksheets_are_skipped_and_other_output_is_unchanged(self):
+        status, _, stderr, expected = self.generate(self.workbook())
+        self.assertEqual(status, 0, stderr)
+        for sheet_name in ["Resource", "EmptyClass"]:
+            for rows in [
+                [],
+                [[None] * len(COLUMNS) + ["Unused source metadata"]],
+                [[" \t\n\u00a0"] * len(COLUMNS) + ["Unused source metadata"]],
+            ]:
+                with self.subTest(sheet=sheet_name, rows=rows):
+                    path = self.workbook()
+                    wb = load_workbook(path)
+                    wb["classes"].insert_rows(2)
+                    wb["classes"]["A2"] = sheet_name
+                    worksheet = wb.create_sheet(sheet_name)
+                    worksheet.append(COLUMNS + ["notes"])
+                    for row in rows:
+                        worksheet.append(row)
+                    wb.save(path)
+                    wb.close()
+
+                    status, stdout, stderr, actual = self.generate(path)
+                    self.assertEqual(status, 0, stderr)
+                    self.assertIn(
+                        f"Skipped {sheet_name}: no properties to document", stdout
+                    )
+                    self.assertIn("Generated ", stdout)
+                    self.assertEqual(actual, expected)
+
+    def test_previously_empty_resource_generates_when_properties_are_added(self):
+        path = self.workbook()
+        wb = load_workbook(path)
+        wb["classes"].insert_rows(2)
+        wb["classes"]["A2"] = "Resource"
+        wb.create_sheet("Resource").append(COLUMNS)
+        wb.save(path)
+        wb.close()
+
+        status, stdout, stderr, before = self.generate(path)
+        self.assertEqual(status, 0, stderr)
+        self.assertIn("Skipped Resource: no properties to document", stdout)
+        self.assertNotIn("properties-resource.html", before)
+
+        wb = load_workbook(path)
+        resource = wb["Resource"]
+        resource.append([
+            "Resource title", "A resource property", "dct:title", "rdfs:Literal",
+            "0..*", "Example resource usage", "Example vocabulary",
+        ])
+        resource["G2"].hyperlink = "https://example.org/resource-vocabulary"
+        wb.save(path)
+        wb.close()
+
+        status, stdout, stderr, after = self.generate(path)
+        self.assertEqual(status, 0, stderr)
+        self.assertNotIn("Skipped Resource:", stdout)
+        self.assertEqual(
+            set(after), {"properties-dataset.html", "properties-resource.html"}
+        )
+        self.assertIn("Resource title", after["properties-resource.html"].decode())
+        self.assertIn(
+            'href="https://example.org/resource-vocabulary"',
+            after["properties-resource.html"].decode(),
+        )
+        self.assertEqual(after["properties-dataset.html"], before["properties-dataset.html"])
+
 
 if __name__ == "__main__":
     unittest.main()
