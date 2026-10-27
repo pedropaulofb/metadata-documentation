@@ -32,7 +32,7 @@ The tables below list the relevant properties, the classes to which they apply, 
           http://publications.europa.eu/resource/authority/access-right
         </a>
       </td>
-      <td>The EU authority table, containing values for access rights of the Dataset. You can choose between the values PUBLIC, NON_PUBLIC and RESTRICTED, even though in the vocabulary itself more values are included. Depending on the value that is chosen here, one of the three different versions of HealthDCAT-AP will be used.</td>
+      <td>The EU authority table, containing values for access rights of the Dataset. You can choose between the values PUBLIC, NON_PUBLIC and RESTRICTED, even though the vocabulary itself includes more values. Depending on the value that is chosen here, one of the three different versions of HealthDCAT-AP will be used.</td>
     </tr>
 
     <tr>
@@ -120,7 +120,7 @@ The tables below list the relevant properties, the classes to which they apply, 
           https://definities.geostandaarden.nl/dcat-ap-nl/nl/
         </a>
       </td>
-      <td>Choose a license that is applicable to your Catalog. You can choose one from the DCAT-AP NL provided list, which uses Creative Commons licenses. If you need help choosing one, it is recommended to use the chooser tool from Creative Commons (https://creativecommons.org/chooser/).</td>
+      <td>Choose a license that is applicable to your Catalog. You can choose one from the list provided by DCAT-AP NL, which uses Creative Commons licenses. If you need help choosing one, it is recommended to use the chooser tool from Creative Commons (https://creativecommons.org/chooser/).</td>
     </tr>
 
     <tr>
@@ -221,7 +221,7 @@ The tables below list the relevant properties, the classes to which they apply, 
           https://definities.geostandaarden.nl/dcat-ap-nl/nl/
         </a>
       </td>
-      <td>For license of Distribution, please choose between "not-open" licence for non-public data or "CC0" for public data.</td>
+      <td>For license of Distribution, please choose between "not-open" licence for non-public data and "CC0" for public data.</td>
     </tr>
 
     <tr>
@@ -309,7 +309,7 @@ The tables below list the relevant properties, the classes to which they apply, 
           https://definities.geostandaarden.nl/dcat-ap-nl/nl/
         </a>
       </td>
-      <td>Choose a license that is applicable to your data service. You can choose one from the DCAT-AP NL provided list, which uses Creative Commons licenses. If you need help choosing one, it is recommended to use the chooser tool from Creative Commons (https://creativecommons.org/chooser/).</td>
+      <td>Choose a license that is applicable to your data service. You can choose one from the list provided by DCAT-AP NL, which uses Creative Commons licenses. If you need help choosing one, it is recommended to use the chooser tool from Creative Commons (https://creativecommons.org/chooser/).</td>
     </tr>
 
     <tr>
@@ -330,7 +330,7 @@ The tables below list the relevant properties, the classes to which they apply, 
         <a href="https://standards.iso.org/iso/19115/resources/Codelists/gml/CI_RoleCode.xml">ISO RoleCode</a>,
         <a href="https://jats4r.niso.org/credit-taxonomy/#table-1-credit-terms-and-urls">CRediT taxonomy</a>
       </td>
-      <td>Choose the role of the attributed agent from either the ISO RoleCode list or from the Credit taxonomy.</td>
+      <td>Choose the role of the attributed agent from either the ISO RoleCode list or the Credit taxonomy.</td>
     </tr>
 
     <tr>
