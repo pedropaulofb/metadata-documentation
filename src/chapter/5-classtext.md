@@ -1,4 +1,4 @@
-## Class Structure 
+## Class Structure ## {#class-structure}
 The Health-RI metadata schema is builds on DCAT-AP 3.0, which defines a set of classes and properties for describing datasets, services, and related resources. To make the model easier to apply (and interoperable) across catalogues, the schema organizes its structure around two types of classes: **Main Classes** and **Supportive Classes**.
 
 - **Main Classes** – the core entities that form the core of the catalogue.
@@ -37,7 +37,7 @@ The main classes and supportive classes together form the Health-RI Core metadat
 - Please visit Confluence for general information about the [metadata schema](https://health-ri.atlassian.net/wiki/spaces/FSD/pages/279281676/4A+Metadata+mapping) and [metadata mapping](https://health-ri.atlassian.net/wiki/spaces/FSD/pages/290291734/Mapping+tutorial).
 
 
-## Usage Notes on Schema / Mapping
+## Usage Notes on Schema / Mapping ## {#usage-notes-on-schema-mapping}
 Supportive classes are included because they form the range of properties used by the main classes [additional requirements to properties for the entity]. They enrich the main classes which are the core entities in the catalogue. Both structures are further divided into **mandatory properties** for conformance and **recommended properties** for richer metadata. 
 
 The separation from above helps modularize metadata and makes it easier to reuse supporting elements across multiple datasets or services. It helps users to easier use those classes. To apply it:

@@ -16,7 +16,7 @@ STATUS_RE = re.compile(
     r"^Status Text:.*\bv(?P<version>\d+\.\d+\.\d+)\b.*$"
 )
 UML_HEADING_RE = re.compile(
-    r"^## UML Class Diagram v(?P<version>\d+\.\d+\.\d+)\s*$"
+    r"^## UML Class Diagram v(?P<version>\d+\.\d+\.\d+)(?:\s+##\s+\{#[^ }]+\})?\s*$"
 )
 EXCEL_RE = re.compile(
     r'^EXCEL_FILE_PATH\s*=\s*["\'](?P<path>[^"\']*HealthRI_v(?P<version>\d+\.\d+\.\d+)\.xlsx)["\']\s*$'

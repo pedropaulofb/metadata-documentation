@@ -1,4 +1,4 @@
-### [Period of time](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Periodoftime) 
+### [Period of time](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Periodoftime) ### {#period-of-time}
 <table class="no-style">   
   <thead> 
     <tr> 

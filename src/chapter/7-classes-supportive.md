@@ -1,7 +1,7 @@
-# Supportive Classes
+# Supportive Classes # {#supportive-classes}
 **Supportive Classes** provide additional context and metadata for the main classes.
 
-## Mandatory supportive classes
+## Mandatory supportive classes ## {#mandatory-supportive-classes}
 
 <pre class=include>
 path: src/table/style-tables-general.md
@@ -35,7 +35,7 @@ path: src/table/style-tables-2.md
 path: src/property/properties-kind.html
 </pre>
 
-## Recommended supportive classes
+## Recommended supportive classes ## {#recommended-supportive-classes}
 
 <pre class=include>
 path: src/table/style-tables-general.md
@@ -165,7 +165,7 @@ path: src/table/style-tables-2.md
 path: src/property/properties-provenancestatement.html
 </pre>
 
-### CSVW Variables
+### CSVW Variables ### {#csvw-variables}
 
 The CSVW (CSV on the Web) specification provides a framework for describing tabular data and its metadata. In Health-RI, it is used to describe data variables in a machine-readable form.
 

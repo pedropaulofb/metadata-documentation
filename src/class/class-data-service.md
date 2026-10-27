@@ -1,4 +1,4 @@
-### [Data Service](http://www.w3.org/ns/dcat#DataService)
+### [Data Service](http://www.w3.org/ns/dcat#DataService) ### {#data-service}
 <table class="no-style">   
   <thead> 
     <tr> 

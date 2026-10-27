@@ -1,4 +1,4 @@
-### [Kind](https://www.w3.org/TR/vcard-rdf/#d4e1819)
+### [Kind](https://www.w3.org/TR/vcard-rdf/#d4e1819) ### {#kind}
 <table class="no-style">   
   <thead> 
     <tr> 

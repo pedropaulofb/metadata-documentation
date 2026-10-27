@@ -1,4 +1,4 @@
-### [Distribution](http://www.w3.org/ns/dcat#Distribution)
+### [Distribution](http://www.w3.org/ns/dcat#Distribution) ### {#distribution}
 <table class="no-style">   
   <thead> 
     <tr> 

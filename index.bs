@@ -1,17 +1,21 @@
 <!-- Document identity and version -->
+<!-- Preview date: replace with the actual document publication date at release. -->
 <pre class='metadata'>
 Title: Health-RI Metadata Model
 Shortname: Hri-spec
 Status: iso/TS
 Level: none
 Status Text: Health-RI core metadata schema v2.1.0.
+Date: 2026-10-27
 </pre>
 
 <!-- Publication and repository PIDs -->
 <pre class='metadata'>
 TR: https://w3id.org/health-ri/metadata/releases/latest
 URL: https://w3id.org/health-ri/metadata/docs
-Previous Version: https://w3id.org/health-ri/metadata/releases
+Canonical URL: https://w3id.org/health-ri/metadata/docs
+Version History: https://w3id.org/health-ri/metadata/releases
+Previous Version: https://w3id.org/health-ri/metadata/releases/v2.0.3
 Repository: https://w3id.org/health-ri/metadata/git
 </pre>
 
