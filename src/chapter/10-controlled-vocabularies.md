@@ -65,7 +65,7 @@ The tables below list the relevant properties, the classes to which they apply, 
           https://w3c.github.io/dpv/2.0/pd/
         </a>
       </td>
-      <td>For this property, you should specify the type(s) of personal data that your dataset contains or processes. These types are defined in the <a href="https://www.w3.org/community/reports/dpvcg/CG-FINAL-dpv-20240801/">Data Privacy Vocabulary (DPV)</a> ontology and include classes such as pd:Age, pd:BirthDate and pd:Gender. Choose the classes that describe personal data inside your Dataset.</td>
+      <td>For this property, you should specify the type(s) of personal data that your dataset contains or processes. These types are defined in the <a href="https://w3id.org/dpv/pd">Personal Data Categories (PD) extension</a> of the <a href="https://www.w3.org/community/reports/dpvcg/CG-FINAL-dpv-20240801/">Data Privacy Vocabulary (DPV)</a> and include classes such as <a href="https://w3id.org/dpv/pd#Age"><code>pd:Age</code></a>, <a href="https://w3id.org/dpv/pd#BirthDate"><code>pd:BirthDate</code></a>, and <a href="https://w3id.org/dpv/pd#Gender"><code>pd:Gender</code></a>. Choose the classes that describe personal data inside your Dataset.</td>
     </tr>
 
     <tr>
