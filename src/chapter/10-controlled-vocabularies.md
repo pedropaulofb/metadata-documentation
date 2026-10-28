@@ -65,7 +65,7 @@ The tables below list the relevant properties, the classes to which they apply, 
           https://w3c.github.io/dpv/2.0/pd/
         </a>
       </td>
-      <td>For this property, you should specify the type(s) of personal data that your dataset contains or processes. These types are defined in the <a href="https://www.w3.org/community/reports/dpvcg/CG-FINAL-dpv-20240801/">Data Privacy Vocabulary (DPV)</a> ontology and include classes such as dpv:Age, dpv:BirthDate and dpv:Gender. Choose the classes that describe personal data inside your Dataset.</td>
+      <td>For this property, you should specify the type(s) of personal data that your dataset contains or processes. These types are defined in the <a href="https://www.w3.org/community/reports/dpvcg/CG-FINAL-dpv-20240801/">Data Privacy Vocabulary (DPV)</a> ontology and include classes such as pd:Age, pd:BirthDate and pd:Gender. Choose the classes that describe personal data inside your Dataset.</td>
     </tr>
 
     <tr>
@@ -131,7 +131,7 @@ The tables below list the relevant properties, the classes to which they apply, 
           https://publications.europa.eu/resource/authority/country
         </a>
       </td>
-      <td>Choose the country of the Catalogue from the EU authority table.</td>
+      <td>Choose the country of the Agent from the EU authority table.</td>
     </tr>
 
     <tr>

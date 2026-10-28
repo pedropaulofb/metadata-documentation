@@ -26,6 +26,7 @@ Several classes from [DCAT-AP NL](https://docs.geostandaarden.nl/dcat/dcat-ap-nl
     <tr><td>dcatap</td><td>http://data.europa.eu/r5r/</td></tr>
     <tr><td>dct</td><td>http://purl.org/dc/terms/</td></tr>
     <tr><td>dpv</td><td>https://w3id.org/dpv#</td></tr>
+    <tr><td>pd</td><td>https://w3id.org/dpv/pd#</td></tr>
     <tr><td>dqv</td><td>https://www.w3.org/TR/vocab-dqv/</td></tr>
     <tr><td>eli</td><td>http://data.europa.eu/eli/ontology#</td></tr>
     <tr><td>foaf</td><td>http://xmlns.com/foaf/0.1/</td></tr>

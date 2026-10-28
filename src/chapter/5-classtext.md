@@ -21,6 +21,7 @@ Supportive classes in this structure:
 - **Relationship**
 - **Quality certificate**
 - **Activity**
+- **Provenance Statement**
 - **CSVW (Variables)**
 
 The main classes and supportive classes together form the Health-RI Core metadata schema. 
