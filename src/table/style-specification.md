@@ -217,7 +217,6 @@ body main table.dataframe th:nth-child(2) { width: 24%; }
 body main table.dataframe th:nth-child(3) { width: 17%; }
 body main table.dataframe th:nth-child(4) { width: 12%; }
 body main table.dataframe th:nth-child(5) { width: 8rem; }
-body main table.dataframe :is(th, td):nth-child(5) { text-align: center; }
 
 body main table.no-style th:nth-child(1) { width: 15%; }
 body main table.no-style th:nth-child(2) { width: 30%; }
