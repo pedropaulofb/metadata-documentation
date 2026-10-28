@@ -7,7 +7,7 @@ Building on the [1st version of the metadata schema](https://github.com/Health-R
 
 Additionally, several metadata fields related to **[Ethical, Legal and Societal Implications (ELSI)](https://www.health-ri.nl/en/about-health-ri/our-experts/elsi)**, as [gathered](https://health-ri.atlassian.net/wiki/spaces/HA/pages/469893133/Metadata+rondom+gebruiksvoorwaarden+en+authenticatie+autorisatie+en+ELSI+aspecten#Catalogus) by the Health-RI ELSI team, have been included in this version 2. These fields are not mandatory but will be evaluated upon implementation in the catalogue.
 
-To indicate the **nature of the data** (e.g., whole genome sequencing or questionnaire data), we propose using `healthdcatap:healthTheme`. For **synthetic data**, use [`dct:type`](https://www.dublincore.org/specifications/dublin-core/dcmi-terms/terms/type/) with the required controlled vocabulary in the [`dcat:Dataset`](http://www.w3.org/ns/dcat#Dataset) class.
+To describe the **data domain** (e.g., surveys and questionnaires), we propose using `edam:has_topic`; to describe the **measurement technique** (e.g., whole genome sequencing), we propose using `schema:measurementTechnique`. For **health themes**, we propose using `healthdcatap:healthTheme`. For **synthetic data**, use [`dct:type`](https://www.dublincore.org/specifications/dublin-core/dcmi-terms/terms/type/) with the required controlled vocabulary in the [`dcat:Dataset`](http://www.w3.org/ns/dcat#Dataset) class.
 
 Several classes from [DCAT-AP NL](https://docs.geostandaarden.nl/dcat/dcat-ap-nl30/) and draft [HealthDCAT-AP](https://healthdataeu.pages.code.europa.eu/healthdcat-ap/releases/release-6/) have been included but not further specified for Health-RI yet. This includes the **DataService** class, meaning that these classes can be used but are not yet tailored to specific data holder needs for the National Health Data Catalogue.
 
@@ -28,11 +28,13 @@ Several classes from [DCAT-AP NL](https://docs.geostandaarden.nl/dcat/dcat-ap-nl
     <tr><td>dpv</td><td>https://w3id.org/dpv#</td></tr>
     <tr><td>pd</td><td>https://w3id.org/dpv/pd#</td></tr>
     <tr><td>dqv</td><td>http://www.w3.org/ns/dqv#</td></tr>
+    <tr><td>edam</td><td>http://edamontology.org/</td></tr>
     <tr><td>eli</td><td>http://data.europa.eu/eli/ontology#</td></tr>
     <tr><td>foaf</td><td>http://xmlns.com/foaf/0.1/</td></tr>
     <tr><td>owl</td><td>http://www.w3.org/2002/07/owl#</td></tr>
     <tr><td>rdf</td><td>http://www.w3.org/1999/02/22-rdf-syntax-ns#</td></tr>
     <tr><td>rdfs</td><td>http://www.w3.org/2000/01/rdf-schema#</td></tr>
+    <tr><td>schema</td><td>http://schema.org/</td></tr>
     <tr><td>skos</td><td>http://www.w3.org/2004/02/skos/core#</td></tr>
     <tr><td>spdx</td><td>http://spdx.org/rdf/terms#</td></tr>
     <tr><td>time</td><td>http://www.w3.org/2006/time#</td></tr>
