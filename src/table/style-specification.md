@@ -53,10 +53,11 @@ body .head .spec-logo {
 
 body .head .spec-appearance:not([hidden]) {
   display: flex;
+  justify-content: flex-end;
   align-items: center;
   flex-wrap: wrap;
   gap: 0.5rem;
-  margin: 0 0 1.5rem;
+  margin: 0 0 0.75rem;
 }
 
 #spec-appearance {
