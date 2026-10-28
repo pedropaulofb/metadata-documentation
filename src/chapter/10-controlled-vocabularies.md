@@ -351,7 +351,7 @@ The tables below list the relevant properties, the classes to which they apply, 
           https://spdx.org/rdf/terms/#d4e2129
         </a>
       </td>
-      <td>Choose one of the named individuals of the spdx:ChecksumAlgorithm class to indicate the algorithm used.</td>
+      <td>Choose one of the named individuals of the <a href="http://spdx.org/rdf/terms#ChecksumAlgorithm"><code>spdx:ChecksumAlgorithm</code></a> class to indicate the algorithm used.</td>
     </tr>
   </tbody>
 </table>
