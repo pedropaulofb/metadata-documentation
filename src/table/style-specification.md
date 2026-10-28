@@ -207,7 +207,8 @@ body main table.dataframe tbody td:first-child {
   font-weight: 600;
 }
 
-body main table.dataframe tbody td:nth-child(3) {
+body main table.dataframe tbody td:nth-child(3),
+body main table.dataframe tbody td:nth-child(4) {
   font-family: ui-monospace, "SFMono-Regular", Consolas, "Liberation Mono", monospace;
 }
 
