@@ -27,7 +27,7 @@ Supportive classes in this structure:
 The main classes and supportive classes together form the Health-RI Core metadata schema. 
 
 **Please take into consideration**:
-- Certain properties (e.g. [`dct:publisher`](https://www.dublincore.org/specifications/dublin-core/dcmi-terms/terms/publisher/), [`dct:creator`](https://www.dublincore.org/specifications/dublin-core/dcmi-terms/terms/creator/), `dct:contactPoint`) in several of the main classes refer to the supporting classes (e.g. [`foaf:Agent`](#agent), [`vcard:Kind`](#kind)). When used, these properties will instantiate new instances of the specific supporting classes for each usage. This means that, for example, the `dct:publisher` and `dct:creator` can instantiate [`foaf:Agent`](#agent) at two separate times with different content (organisation vs. person).
+- Certain properties (e.g. [`dct:publisher`](https://www.dublincore.org/specifications/dublin-core/dcmi-terms/terms/publisher/), [`dct:creator`](https://www.dublincore.org/specifications/dublin-core/dcmi-terms/terms/creator/), `dcat:contactPoint`) in several of the main classes refer to the supporting classes (e.g. [`foaf:Agent`](#agent), [`vcard:Kind`](#kind)). When used, these properties will instantiate new instances of the specific supporting classes for each usage. This means that, for example, the `dct:publisher` and `dct:creator` can instantiate [`foaf:Agent`](#agent) at two separate times with different content (organisation vs. person).
 
 - It is possible that not all main classes of the metadata schema are necessary to describe your data or the structure of your data. For example, [DataService](#data-service) or [DatasetSeries](#dataset-series) might not apply to all datasets described/onboarded in the National Health Data Catalogue.
 
@@ -39,7 +39,7 @@ The main classes and supportive classes together form the Health-RI Core metadat
 
 
 ## Usage Notes on Schema / Mapping
-Supportive classes are included because they form the range of properties used by the main classes [additional requirements to properties for the entity]. They enrich the main classes which are the core entities in the catalogue. Both structures are further divided into **mandatory properties** for conformance and **recommended properties** for richer metadata. 
+Supportive classes are included because they form the range of properties used by the main classes or by other supportive classes [additional requirements to properties for the entity]. They enrich the main classes which are the core entities in the catalogue. Both structures are further divided into **mandatory properties** for conformance and **recommended properties** for richer metadata. 
 
 The separation described above helps modularize metadata and makes it easier to reuse supporting elements across multiple datasets or services. It helps users to use those classes more easily. To apply it:
 - Start with main classes -> Identify the datasets, services, and distributions you need to describe.
