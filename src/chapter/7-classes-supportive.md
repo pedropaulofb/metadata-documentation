@@ -167,7 +167,7 @@ path: src/property/properties-provenancestatement.html
 
 ### CSVW Variables
 
-The CSVW (CSV on the Web) specification provides a framework for describing tabular data and its metadata. In Health-RI, it is used to describe data variables in a machine-readable form.
+The [CSV on the Web (CSVW)](https://www.w3.org/TR/tabular-metadata/) specification provides a framework for describing tabular data and its metadata. In Health-RI, it is used to describe data variables in a machine-readable form.
 
 The following three classes work together to describe those variables:
 

@@ -1,5 +1,5 @@
 # Permanent Urls 
-To support long-term FAIR (Findable, Accessible, Interoperable, and Reusable) access to Health-RI Metadata Schema resources, we provide persistent URLs using the [W3ID](https://w3id.org/) system. These permanent identifiers improve the **findability** and **accessibility** of the related artifacts.
+To support long-term [FAIR (Findable, Accessible, Interoperable, and Reusable)](https://www.go-fair.org/fair-principles/) access to Health-RI Metadata Schema resources, we provide persistent URLs using the [W3ID](https://w3id.org/) system. These permanent identifiers improve the **findability** and **accessibility** of the related artifacts.
 The following **W3ID redirects** are available for Health-RI metadata:
 
 **Git repository:** [w3id.org/health-ri/metadata/git](https://w3id.org/health-ri/metadata/git)
