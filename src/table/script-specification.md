@@ -2,7 +2,56 @@
 (function () {
   "use strict";
 
+  function enhanceAppearance() {
+    var control = document.getElementById("spec-appearance");
+    if (!control) return;
+
+    // Reuse Bikeshed's inline theme rules and the local palette together,
+    // without duplicating their colors. System restores the original queries.
+    var themeRules = [];
+    function collectThemeRules(rules) {
+      Array.from(rules).forEach(function (rule) {
+        if (rule.type === CSSRule.MEDIA_RULE) {
+          var match = rule.media.mediaText.match(/^\(prefers-color-scheme:\s*(light|dark)\)$/);
+          if (match) {
+            themeRules.push({ media: rule.media, original: rule.media.mediaText, scheme: match[1] });
+          }
+        }
+        if (rule.cssRules) collectThemeRules(rule.cssRules);
+      });
+    }
+    document.querySelectorAll("style").forEach(function (style) {
+      if (style.sheet) collectThemeRules(style.sheet.cssRules);
+    });
+
+    function applyAppearance(mode) {
+      themeRules.forEach(function (rule) {
+        rule.media.mediaText = mode === "system" ? rule.original : (rule.scheme === mode ? "all" : "not all");
+      });
+      document.documentElement.style.colorScheme = mode === "system" ? "light dark" : mode;
+    }
+
+    var storageKey = "health-ri-spec-appearance";
+    try {
+      var savedMode = localStorage.getItem(storageKey);
+      if (savedMode === "light" || savedMode === "dark") control.value = savedMode;
+    } catch (error) {
+      // The selector still works when browser storage is unavailable.
+    }
+    applyAppearance(control.value);
+    control.parentElement.hidden = false;
+    control.addEventListener("change", function () {
+      applyAppearance(control.value);
+      try {
+        localStorage.setItem(storageKey, control.value);
+      } catch (error) {
+        // Remembering the preference is optional.
+      }
+    });
+  }
+
   function enhanceSpecificationLayout() {
+    enhanceAppearance();
     // Keep horizontal scrolling local to tables on narrow screens.
     document.querySelectorAll("main table").forEach(function (table) {
       var wrapper = document.createElement("div");

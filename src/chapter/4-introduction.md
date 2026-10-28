@@ -1,6 +1,7 @@
 # Introduction # {#introduction}
 
 ## Scope and Current State of the Schema ## {#scope-and-current-state-of-the-schema}
+
 Building on the [1st version of the metadata schema](https://github.com/Health-RI/health-ri-metadata/tree/master), version 2 aims to incorporate both [DCAT-AP NL](https://geonovum.github.io/DCAT-AP-NL30/) and the (yet-to-be-finalized) [HealthDCAT-AP](https://healthdataeu.pages.code.europa.eu/healthdcat-ap/releases/release-6/), along with Health-RI-specific requirements for the [National Health Data Catalogue](https://catalogus.healthdata.nl/). It introduces several health-related properties (marked in blue in the UML diagram below), with suggested or required controlled vocabularies where applicable.
 
 **Important Note:** HealthDCAT-AP has not yet been officially finalized and remains subject to change. Once its official release is published, Health-RI will reevaluate compatibility with HealthDCAT-AP. This version is based on the draft dated *16-12-2024*. In that draft, the cardinalities of HealthDCAT-AP vary depending on different access rights (public, restricted, non-public). For now, compliance is ensured with the [open version](https://healthdataeu.pages.code.europa.eu/healthdcat-ap/releases/release-6/), using its UML diagram for reference.
@@ -42,6 +43,7 @@ Several classes from [DCAT-AP NL](https://docs.geostandaarden.nl/dcat/dcat-ap-nl
 </table>
 
 # Overview and Diagram # {#overview-and-diagram}
+
 An overview of the metadata schema core is presented in the UML diagram below. This UML diagram showcases primary classes (entities), excluding detailed definitions such as `rdfs:label` and `rdfs:comment`. Each block represents a class and lists its attributes (properties). Where properties reference another class, their range is displayed in pink font.
 
 If a class is linked to another class with a closed arrow, it inherits all properties from the other class (e.g., `dcat:Dataset` inherits from `dcat:Resource`). Other arrows represent relationships, including their types (e.g., `dcat:Dataset` connects to a `dcat:DatasetSeries` via `dcat:inSeries`), along with cardinalities (e.g., `dcat:Dataset` connects to zero or more `dcat:DatasetSeries`). **Mandatory relationships** are marked with dark labels, while **recommended relationships** use a lighter color.

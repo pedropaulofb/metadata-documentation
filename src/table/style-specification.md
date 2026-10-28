@@ -51,6 +51,28 @@ body .head .spec-logo {
   height: auto;
 }
 
+body .head .spec-appearance:not([hidden]) {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0 0 1.5rem;
+}
+
+#spec-appearance {
+  font: inherit;
+  color: var(--spec-table-text);
+  background: var(--spec-table-bg);
+  border: 1px solid var(--spec-border);
+  border-radius: 0.25rem;
+  padding: 0.3rem 0.5rem;
+}
+
+#spec-appearance:focus-visible {
+  outline: 2px solid var(--spec-focus);
+  outline-offset: 2px;
+}
+
 body .head dl {
   display: grid;
   grid-template-columns: minmax(10rem, 13rem) minmax(0, 1fr);
@@ -74,6 +96,7 @@ body main > p,
 body main > ul,
 body main > ol,
 body .p-summary {
+  box-sizing: border-box;
   max-width: 75ch;
 }
 
@@ -304,7 +327,8 @@ body #toc .toc li {
     background: #fff;
   }
 
-  #spec-toc-resizer {
+  #spec-toc-resizer,
+  body .head .spec-appearance {
     display: none !important;
   }
 

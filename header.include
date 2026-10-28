@@ -15,6 +15,14 @@
   <p class="spec-brand">
     <img class="spec-logo" src="https://raw.githubusercontent.com/Health-RI/metadata-documentation/main/src/images/HRI_Logo.png" alt="Health-RI Logo" title="Health-RI Logo" width="450">
   </p>
+  <p class="spec-appearance" hidden>
+    <label for="spec-appearance">Appearance</label>
+    <select id="spec-appearance">
+      <option value="system">System</option>
+      <option value="light">Light</option>
+      <option value="dark">Dark</option>
+    </select>
+  </p>
   <div data-fill-with="spec-metadata"></div>
   <div data-fill-with="warning"></div>
   <p class="copyright" data-fill-with="copyright"></p>
