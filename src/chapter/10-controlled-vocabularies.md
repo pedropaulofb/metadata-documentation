@@ -412,7 +412,7 @@ The tables below list the relevant properties, the classes to which they apply, 
           https://w3c.github.io/dpv/2.0/dpv/modules/legal_basis.html#vocab-legal-basis
         </a>
       </td>
-      <td>You can select one of the subclasses of dpv:LegalBasis to describe the legal basis for processing your dataset. All possible options are defined in the DPV ontology, including Consent, Contract, LegalObligation, LegitimateInterest, VitalInterest, etc. Some of these have further subclasses for more precise specification; for example, Consent can be specialized as InformedConsent → ExpressedConsent → ExplicitlyExpressedConsent. Choose the term that best reflects the legal basis applicable to your dataset.</td>
+      <td>You can select one of the concepts in the dpv:LegalBasis taxonomy to describe the legal basis for processing your dataset. The DPV ontology includes Consent, Contract, LegalObligation, LegitimateInterest, VitalInterest, etc. Some of these have narrower concepts for more precise specification; for example, Consent can be specialized as InformedConsent → ExpressedConsent → ExplicitlyExpressedConsent. Choose the term that best reflects the legal basis applicable to your dataset.</td>
     </tr>
 
     <tr>
