@@ -171,9 +171,9 @@ The [CSV on the Web (CSVW)](https://www.w3.org/TR/tabular-metadata/) specificati
 
 The following three classes work together to describe those variables:
 
-* Table Group - The top-level container that organizes one or more CSV tables.
-* Table - Represents a single CSV file with its metadata and variable definitions.
-* Column - Describes individual variables (columns) within the CSV file.
+* [Table Group](#table-group) - The top-level container that organizes one or more CSV tables.
+* [Table](#table) - Represents a single CSV file with its metadata and variable definitions.
+* [Column](#column) - Describes individual variables (columns) within the CSV file.
 
 **Note**: The CSVW variables have been added to the Health-RI metadata model version 2.1 for testing purposes. For now it is not yet planned to be added to the national catalogue's front end.
 

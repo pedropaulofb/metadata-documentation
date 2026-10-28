@@ -51,7 +51,7 @@ The UML diagram separates **main classes** from **supporting classes**. While re
 
 Properties derived from draft [HealthDCAT-AP](https://healthdataeu.pages.code.europa.eu/healthdcat-ap/releases/release-6/) (mostly within the `dcat:Dataset` class) are marked blue.
 
-A tabular overview of all classes and properties—including their range, cardinality, controlled vocabulary (if applicable), and usage notes—is provided below. A reference sheet containing this information can be found [here](Documents/Metadata_CoreGenericHealth_v2.xlsx). This sheet also documents property histories (compared to v1 of the Health-RI core metadata schema) and specifies the origins of new constraints (whether they stem from DCAT-AP v3, DCAT-AP NL, or HealthDCAT-AP).
+A tabular overview of all classes and properties—including their range, cardinality, controlled vocabulary (if applicable), and usage notes—is provided below. A reference sheet containing this information can be found [here](https://github.com/Health-RI/metadata-documentation/blob/v2.1/src/excel/HealthRI_v2.1.0.xlsx). This sheet also documents property histories (compared to v1 of the Health-RI core metadata schema) and specifies the origins of new constraints (whether they stem from DCAT-AP v3, DCAT-AP NL, or HealthDCAT-AP).
 
 
 ## UML Class Diagram v2.1.0
