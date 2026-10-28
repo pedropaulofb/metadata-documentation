@@ -2,6 +2,7 @@
 /* Applied after the included table styles so every table shares one layout. */
 :root {
   --spec-toc-width: 300px;
+  --spec-page-bg: #fff;
   --spec-heading: #1c4078;
   --spec-border: #d5dee8;
   --spec-table-bg: #fff;
@@ -13,8 +14,14 @@
   --spec-focus: #245ca6;
 }
 
+/* Override Bikeshed's page background without duplicating its color palette. */
+html:root {
+  --bg: var(--spec-page-bg);
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
+    --spec-page-bg: #10151d;
     --spec-heading: #a9caff;
     --spec-border: #455365;
     --spec-table-bg: #151c26;
@@ -93,6 +100,11 @@ body .head dl dd + dd {
   overflow-wrap: anywhere;
 }
 
+/* Tighten only consecutive editor rows within the metadata grid. */
+body .head dl dd.editor + dd.editor {
+  margin-top: -0.25rem;
+}
+
 body main > p,
 body main > ul,
 body main > ol,
@@ -103,6 +115,10 @@ body .p-summary {
 
 body main h2 {
   margin-top: 3rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--spec-border);
+  font-size: 1.6rem;
+  font-weight: 600;
 }
 
 body main h3 {
@@ -187,6 +203,14 @@ body main table a {
 }
 
 /* Six-column property tables share proportions; cardinality keeps a readable width. */
+body main table.dataframe tbody td:first-child {
+  font-weight: 600;
+}
+
+body main table.dataframe tbody td:nth-child(3) {
+  font-family: ui-monospace, "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+}
+
 body main table.dataframe th:nth-child(1) { width: 14%; }
 body main table.dataframe th:nth-child(2) { width: 24%; }
 body main table.dataframe th:nth-child(3) { width: 17%; }
@@ -223,6 +247,14 @@ body #toc > .toc > li > a {
 body #toc .toc li {
   margin-top: 0.35rem;
   margin-bottom: 0.35rem;
+}
+
+@media screen {
+  /* Bikeshed's ToC links use display: contents, so style the visible label. */
+  body #toc a[aria-current="location"] > .content {
+    background: var(--spec-table-head);
+    box-shadow: -3px 0 0 var(--spec-focus);
+  }
 }
 
 #spec-toc-resizer {
@@ -304,6 +336,10 @@ body #toc .toc li {
     margin-top: 0.25rem;
   }
 
+  body .head dl dd.editor + dd.editor {
+    margin-top: 0;
+  }
+
   .spec-table-wrap {
     overflow-x: auto;
   }
@@ -319,6 +355,7 @@ body #toc .toc li {
 
 @media print {
   :root {
+    --spec-page-bg: #fff;
     --spec-heading: #1c4078;
     --spec-border: #aab5c3;
   }

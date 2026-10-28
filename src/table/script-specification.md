@@ -50,6 +50,48 @@
     });
   }
 
+  function enhanceSectionHighlight(toc) {
+    var main = document.querySelector("main");
+    var sections = [];
+    toc.querySelectorAll('a[href^="#"]').forEach(function (link) {
+      var heading = document.getElementById(link.getAttribute("href").slice(1));
+      if (main && heading && main.contains(heading)) {
+        sections.push({ link: link, heading: heading });
+      }
+    });
+    var active = null;
+    var pending = null;
+
+    function updateCurrentSection() {
+      pending = null;
+      var current = null;
+      var readingLine = Math.min(120, window.innerHeight * 0.2);
+      for (var i = 0; i < sections.length; i++) {
+        if (sections[i].heading.getBoundingClientRect().top > readingLine) break;
+        current = sections[i];
+      }
+      // Short final sections may never reach the reading line before page end.
+      if (window.scrollY > 0 && window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2) {
+        current = sections[sections.length - 1] || null;
+      }
+      if (current === active) return;
+      if (active) active.link.removeAttribute("aria-current");
+      active = current;
+      if (active) active.link.setAttribute("aria-current", "location");
+    }
+
+    function scheduleUpdate() {
+      if (pending === null) pending = window.setTimeout(updateCurrentSection, 50);
+    }
+
+    window.addEventListener("scroll", scheduleUpdate, { passive: true });
+    window.addEventListener("resize", scheduleUpdate);
+    window.addEventListener("hashchange", scheduleUpdate);
+    window.addEventListener("load", scheduleUpdate);
+    updateCurrentSection();
+    return scheduleUpdate;
+  }
+
   function enhanceSpecificationLayout() {
     enhanceAppearance();
     // Keep horizontal scrolling local to tables on narrow screens.
@@ -62,6 +104,7 @@
 
     var toc = document.getElementById("toc");
     if (!toc) return;
+    var updateSectionHighlight = enhanceSectionHighlight(toc);
 
     var desktop = window.matchMedia("screen and (min-width: 78em)");
     var root = document.documentElement;
@@ -86,6 +129,7 @@
       root.style.setProperty("--spec-toc-width", width + "px");
       separator.setAttribute("aria-valuenow", width);
       separator.setAttribute("aria-valuetext", width + " pixels");
+      updateSectionHighlight();
     }
 
     function stopResizing() {
@@ -103,6 +147,7 @@
       separator.hidden = !enabled;
       separator.tabIndex = enabled ? 0 : -1;
       if (!enabled) stopResizing();
+      updateSectionHighlight();
     }
 
     separator.addEventListener("pointerdown", function (event) {
