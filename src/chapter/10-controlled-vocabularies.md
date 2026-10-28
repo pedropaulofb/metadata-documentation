@@ -65,7 +65,7 @@ The tables below list the relevant properties, the classes to which they apply, 
           https://w3c.github.io/dpv/2.0/pd/
         </a>
       </td>
-      <td>For this property, you should specify the type(s) of personal data that your dataset contains or processes. These types are defined in the DPV ontology and include classes such as dpv:Age, dpv:BirthDate and dpv:Gender. Choose the classes that describe personal data inside your Dataset.</td>
+      <td>For this property, you should specify the type(s) of personal data that your dataset contains or processes. These types are defined in the <a href="https://www.w3.org/community/reports/dpvcg/CG-FINAL-dpv-20240801/">Data Privacy Vocabulary (DPV)</a> ontology and include classes such as dpv:Age, dpv:BirthDate and dpv:Gender. Choose the classes that describe personal data inside your Dataset.</td>
     </tr>
 
     <tr>
@@ -188,7 +188,7 @@ The tables below list the relevant properties, the classes to which they apply, 
           http://www.iana.org/assignments/media-types/media-types.xhtml
         </a>
       </td>
-      <td>Choose the compression format of the Distribution from the IANA media type list.</td>
+      <td>Choose the compression format of the Distribution from the Internet Assigned Numbers Authority (IANA) media type list.</td>
     </tr>
 
     <tr>
@@ -330,7 +330,7 @@ The tables below list the relevant properties, the classes to which they apply, 
         <a href="https://standards.iso.org/iso/19115/resources/Codelists/gml/CI_RoleCode.xml">ISO RoleCode</a>,
         <a href="https://jats4r.niso.org/credit-taxonomy/#table-1-credit-terms-and-urls">CRediT taxonomy</a>
       </td>
-      <td>Choose the role of the attributed agent from either the ISO RoleCode list or the CRediT taxonomy.</td>
+      <td>Choose the role of the attributed agent from either the ISO RoleCode list or the Contributor Role Taxonomy (CRediT).</td>
     </tr>
 
     <tr>
