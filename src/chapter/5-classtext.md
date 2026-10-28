@@ -27,7 +27,7 @@ Supportive classes in this structure:
 The main classes and supportive classes together form the Health-RI Core metadata schema. 
 
 **Please take into consideration**:
-- Certain properties (e.g. [`dct:publisher`](https://www.dublincore.org/specifications/dublin-core/dcmi-terms/terms/publisher/), [`dct:creator`](https://www.dublincore.org/specifications/dublin-core/dcmi-terms/terms/creator/), `dcat:contactPoint`) in several of the main classes refer to the supporting classes (e.g. [`foaf:Agent`](#agent), [`vcard:Kind`](#kind)). When used, these properties will instantiate new instances of the specific supporting classes for each usage. This means that, for example, the `dct:publisher` and `dct:creator` can instantiate [`foaf:Agent`](#agent) at two separate times with different content (organisation vs. person).
+- Certain properties (e.g. [`dct:publisher`](https://www.dublincore.org/specifications/dublin-core/dcmi-terms/terms/publisher/), [`dct:creator`](https://www.dublincore.org/specifications/dublin-core/dcmi-terms/terms/creator/), `dcat:contactPoint`) in several of the main classes refer to the supporting classes (e.g. [`foaf:Agent`](#agent), [`vcard:Kind`](#kind)). When used, these properties refer to instances of the specific supporting classes. For example, `dct:publisher` and `dct:creator` can refer to different [`foaf:Agent`](#agent) instances (organisation vs. person).
 
 - It is possible that not all main classes of the metadata schema are necessary to describe your data or the structure of your data. For example, [DataService](#data-service) or [DatasetSeries](#dataset-series) might not apply to all datasets described/onboarded in the National Health Data Catalogue.
 
