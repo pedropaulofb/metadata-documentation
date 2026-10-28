@@ -330,7 +330,7 @@ The tables below list the relevant properties, the classes to which they apply, 
         <a href="https://standards.iso.org/iso/19115/resources/Codelists/gml/CI_RoleCode.xml">ISO RoleCode</a>,
         <a href="https://jats4r.niso.org/credit-taxonomy/#table-1-credit-terms-and-urls">CRediT taxonomy</a>
       </td>
-      <td>Choose the role of the attributed agent from either the ISO RoleCode list or the Credit taxonomy.</td>
+      <td>Choose the role of the attributed agent from either the ISO RoleCode list or the CRediT taxonomy.</td>
     </tr>
 
     <tr>
@@ -401,7 +401,7 @@ The tables below list the relevant properties, the classes to which they apply, 
         <a href="http://sws.geonames.org/">http://sws.geonames.org/</a>,
         <a href="https://vocabs.cbs.nl/nl/">https://vocabs.cbs.nl/nl/</a>
       </td>
-      <td>For this property you can use controlled vocabularies depending on which best represents your dataset. The EU provides three relevant authority tables - for continent, country, and place, with country codes aligned to ISO standards where applicable. Your choice depends on the granularity of the geographical coverage: for example, if your dataset covers the entire Netherlands, you can use http://publications.europa.eu/resource/authority/country/NLD from the Country authority table, while for a specific city you should check the Place authority table. Since the Place table has limited coverage, you can also use Geonames, a widely used geographical database with global coverage, or CBS vocabularies, which focus on places in the Netherlands. In general, prefer EU authority URIs first, then Geonames, and finally national vocabularies for finer-grained locations.</td>
+      <td>For this property you can use controlled vocabularies depending on which best represents your dataset. The EU provides three relevant authority tables - for continent, country, and place, with country codes aligned to ISO standards where applicable. Your choice depends on the granularity of the geographical coverage: for example, if your dataset covers the entire Netherlands, you can use http://publications.europa.eu/resource/authority/country/NLD from the Country authority table, while for a specific city you should check the Place authority table. Since the Place table has limited coverage, you can also use GeoNames, a widely used geographical database with global coverage, or CBS vocabularies, which focus on places in the Netherlands. In general, prefer EU authority URIs first, then GeoNames, and finally national vocabularies for finer-grained locations.</td>
     </tr>
 
     <tr>
@@ -436,7 +436,7 @@ The tables below list the relevant properties, the classes to which they apply, 
         <a href="http://sws.geonames.org/">http://sws.geonames.org/</a>,
         <a href="https://vocabs.cbs.nl/nl/">https://vocabs.cbs.nl/nl/</a>
       </td>
-      <td>For this property you can use controlled vocabularies depending on which best represents your catalogue. The EU provides three relevant authority tables - for continent, country, and place, with country codes aligned to ISO standards where applicable. Your choice depends on the granularity of the geographical coverage: for example, if your catalogue covers the entire Netherlands, you can use http://publications.europa.eu/resource/authority/country/NLD from the Country authority table, while for a specific city you should check the Place authority table. Since the Place table has limited coverage, you can also use Geonames, a widely used geographical database with global coverage, or CBS vocabularies, which focus on places in the Netherlands. In general, prefer EU authority URIs first, then Geonames, and finally national vocabularies for finer-grained locations.</td>
+      <td>For this property you can use controlled vocabularies depending on which best represents your catalogue. The EU provides three relevant authority tables - for continent, country, and place, with country codes aligned to ISO standards where applicable. Your choice depends on the granularity of the geographical coverage: for example, if your catalogue covers the entire Netherlands, you can use http://publications.europa.eu/resource/authority/country/NLD from the Country authority table, while for a specific city you should check the Place authority table. Since the Place table has limited coverage, you can also use GeoNames, a widely used geographical database with global coverage, or CBS vocabularies, which focus on places in the Netherlands. In general, prefer EU authority URIs first, then GeoNames, and finally national vocabularies for finer-grained locations.</td>
     </tr>
 
     <tr>
@@ -449,7 +449,7 @@ The tables below list the relevant properties, the classes to which they apply, 
         <a href="http://sws.geonames.org/">http://sws.geonames.org/</a>,
         <a href="https://vocabs.cbs.nl/nl/">https://vocabs.cbs.nl/nl/</a>
       </td>
-      <td>For this property you can use controlled vocabularies depending on which best represents your dataset series. The EU provides three relevant authority tables - for continent, country, and place, with country codes aligned to ISO standards where applicable. Your choice depends on the granularity of the geographical coverage: for example, if your dataset series covers the entire Netherlands, you can use http://publications.europa.eu/resource/authority/country/NLD from the Country authority table, while for a specific city you should check the Place authority table. Since the Place table has limited coverage, you can also use Geonames, a widely used geographical database with global coverage, or CBS vocabularies, which focus on places in the Netherlands. In general, prefer EU authority URIs first, then Geonames, and finally national vocabularies for finer-grained locations.</td>
+      <td>For this property you can use controlled vocabularies depending on which best represents your dataset series. The EU provides three relevant authority tables - for continent, country, and place, with country codes aligned to ISO standards where applicable. Your choice depends on the granularity of the geographical coverage: for example, if your dataset series covers the entire Netherlands, you can use http://publications.europa.eu/resource/authority/country/NLD from the Country authority table, while for a specific city you should check the Place authority table. Since the Place table has limited coverage, you can also use GeoNames, a widely used geographical database with global coverage, or CBS vocabularies, which focus on places in the Netherlands. In general, prefer EU authority URIs first, then GeoNames, and finally national vocabularies for finer-grained locations.</td>
     </tr>
   </tbody>
 </table>

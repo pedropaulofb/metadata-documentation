@@ -9,7 +9,7 @@ Additionally, several **ELSI**-related metadata fields, as [gathered](https://he
 
 To indicate the **nature of the data** (e.g., whole genome sequencing or questionnaire data), we propose using `healthdcatap:healthTheme`. For **synthetic data**, use `dct:type` with the required controlled vocabulary in the `dcat:Dataset` class.
 
-Several classes from [DCAT-AP NL](https://docs.geostandaarden.nl/dcat/dcat-ap-nl30/) and draft [HealthDCAT-AP](https://healthdataeu.pages.code.europa.eu/healthdcat-ap/releases/release-6/) have been included but not further specified for Health-RI yet. This includes the **DataService** class, meaning that these classes can be used but are not yet tailored to specific dataholder needs for the National Health Data Catalogue.
+Several classes from [DCAT-AP NL](https://docs.geostandaarden.nl/dcat/dcat-ap-nl30/) and draft [HealthDCAT-AP](https://healthdataeu.pages.code.europa.eu/healthdcat-ap/releases/release-6/) have been included but not further specified for Health-RI yet. This includes the **DataService** class, meaning that these classes can be used but are not yet tailored to specific data holder needs for the National Health Data Catalogue.
 
   
 ## Used Prefixes
