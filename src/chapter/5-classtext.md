@@ -44,8 +44,8 @@ Supportive classes are included because they form the range of properties used b
 The separation described above helps modularize metadata and makes it easier to reuse supporting elements across multiple datasets or services. It helps users to use those classes more easily. To apply it:
 - Start with main classes -> Identify the datasets, services, and distributions you need to describe.
 - Link supportive classes –> Use them wherever the schema specifies a property range (e.g., publisher → Agent).
-- Always fill mandatory properties –> Ensure your metadata is valid and interoperable.
-- Check controlled vocabulary requirements -> For each property, consult [Section 7](#controlled-vocabularies) to determine whether a MUST, AT LEAST 1, or MAY requirement applies, as controlled vocabularies ensure consistent and interoperable values.
+- Always fill mandatory properties –> Support metadata validity and interoperability.
+- Check controlled vocabulary requirements -> For each property, consult [Section 7](#controlled-vocabularies) to determine whether a MUST, AT LEAST 1, or MAY requirement applies, as controlled vocabularies support consistent and interoperable values.
 - Add recommended properties where possible –> Improve FAIRness and increase the overall maturity of your metadata.
 - Reuse supportive entities –> E.g. if the same Agent or Identifier appears in multiple records, reference it rather than duplicating it.
 

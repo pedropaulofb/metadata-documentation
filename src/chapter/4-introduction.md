@@ -3,7 +3,7 @@
 ## Scope and Current State of the Schema
 Building on the [1st version of the metadata schema](https://github.com/Health-RI/health-ri-metadata/tree/v1.0.2), version 2 aims to incorporate both [DCAT-AP NL](https://geonovum.github.io/DCAT-AP-NL30/) and the (yet-to-be-finalized) [HealthDCAT-AP](https://healthdataeu.pages.code.europa.eu/healthdcat-ap/releases/release-6/), along with Health-RI-specific requirements for the [National Health Data Catalogue](https://catalogus.healthdata.nl/). It introduces several health-related properties (marked in blue in the [Unified Modeling Language (UML)](https://www.omg.org/spec/UML/) diagram below), with suggested or required controlled vocabularies where applicable.
 
-**Important Note:** HealthDCAT-AP has not yet been officially finalized and remains subject to change. Once its official release is published, Health-RI will reevaluate compatibility with HealthDCAT-AP. This version is based on the draft dated *16-12-2024*. In that draft, the cardinalities of HealthDCAT-AP vary depending on different access rights (public, restricted, non-public). For now, compliance is ensured with the [open version](https://healthdataeu.pages.code.europa.eu/healthdcat-ap/releases/release-6/), using its UML diagram for reference.
+**Important Note:** HealthDCAT-AP has not yet been officially finalized and remains subject to change. Once its official release is published, Health-RI will reevaluate compatibility with HealthDCAT-AP. This version is based on the draft dated *16-12-2024*. In that draft, the cardinalities of HealthDCAT-AP vary depending on different access rights (public, restricted, non-public). For now, the [OPEN variant](https://healthdataeu.pages.code.europa.eu/healthdcat-ap/releases/release-6/) is used as a baseline, with documented Health-RI-specific deviations, and its UML diagram is used for reference.
 
 Additionally, several metadata fields related to **[Ethical, Legal and Societal Implications (ELSI)](https://www.health-ri.nl/en/about-health-ri/our-experts/elsi)**, as [gathered](https://health-ri.atlassian.net/wiki/spaces/HA/pages/469893133/Metadata+rondom+gebruiksvoorwaarden+en+authenticatie+autorisatie+en+ELSI+aspecten#Catalogus) by the Health-RI ELSI team, have been included in this version 2. These fields are not mandatory but will be evaluated upon implementation in the catalogue.
 
@@ -40,7 +40,7 @@ Several classes from [DCAT-AP NL](https://docs.geostandaarden.nl/dcat/dcat-ap-nl
     <tr><td>time</td><td>http://www.w3.org/2006/time#</td></tr>
     <tr><td>vcard</td><td>http://www.w3.org/2006/vcard/ns#</td></tr>
     <tr><td>xsd</td><td>http://www.w3.org/2001/XMLSchema#</td></tr>
-    <tr><td>healthdcatap</td><td>To Be Determined</td></tr>
+    <tr><td>healthdcatap</td><td>http://healthdataportal.eu/ns/health#</td></tr>
   </tbody>
 </table>
 

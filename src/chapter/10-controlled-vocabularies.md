@@ -32,7 +32,7 @@ The tables below list the relevant properties, the classes to which they apply, 
           http://publications.europa.eu/resource/authority/access-right
         </a>
       </td>
-      <td>The EU authority table, containing values for access rights of the Dataset. You can choose between the values PUBLIC, NON_PUBLIC and RESTRICTED, even though the vocabulary itself includes more values. Depending on the value that is chosen here, one of the three different versions of HealthDCAT-AP will be used.</td>
+      <td>The EU authority table, containing values for access rights of the Dataset. You can choose between the values PUBLIC, NON_PUBLIC and RESTRICTED, even though the vocabulary itself includes more values. The Health-RI v2 schema uses the OPEN variant of the HealthDCAT-AP draft as its baseline, irrespective of the selected access-rights value.</td>
     </tr>
 
     <tr>
