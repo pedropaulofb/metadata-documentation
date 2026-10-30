@@ -171,6 +171,21 @@ class VersionConsistencyTests(unittest.TestCase):
             stream.write(f'<img src="{image}">\n')
         self.assert_invalid(f"referenced UML image does not exist: {image}")
 
+    def test_image_references_on_the_same_line_are_all_checked(self):
+        for image, exists, message in [
+            ("src/images/HRI_metadata_V2.2.png", True, "Major/minor mismatch:"),
+            ("src/images/HRI_metadata_p2_1.png", False, "referenced UML image does not exist:"),
+        ]:
+            with self.subTest(image=image):
+                if exists:
+                    self.create_image(image)
+                self.intro.write_text(
+                    "## UML Class Diagram v2.1.0\n\n"
+                    f'<a href="{self.image}"><img src="{image}"></a>\n',
+                    encoding="utf-8",
+                )
+                self.assert_invalid(message)
+
     def test_missing_required_full_versions_are_rejected(self):
         for path, label in [
             (self.index, "Bikeshed status version"),
@@ -188,7 +203,7 @@ class VersionConsistencyTests(unittest.TestCase):
             (self.intro, "UML heading version"),
         ]:
             original = path.read_text(encoding="utf-8")
-            for version in ["2.1", "2.1.x", "unknown"]:
+            for version in ["2.1", "2.1.x", "2.1.0.9", "2.1.0.x", "unknown"]:
                 with self.subTest(label=label, version=version):
                     path.write_text(original.replace("2.1.0", version), encoding="utf-8")
                     self.assert_invalid(f"expected exactly one {label}; found 0")

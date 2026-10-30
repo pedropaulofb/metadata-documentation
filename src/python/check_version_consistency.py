@@ -12,7 +12,7 @@ INDEX = ROOT / "index.bs"
 INTRO = ROOT / "src/chapter/4-introduction.md"
 
 STATUS_RE = re.compile(
-    r"^Status Text:.*\bv(?P<version>\d+\.\d+\.\d+)\b.*$"
+    r"^Status Text:.*\bv(?P<version>\d+\.\d+\.\d+)\b(?!\.\w).*$"
 )
 UML_HEADING_RE = re.compile(
     r"^## UML Class Diagram v(?P<version>\d+\.\d+\.\d+)(?:\s+##\s+\{#[^ }]+\})?\s*$"
@@ -26,8 +26,7 @@ IMAGE_RE = re.compile(
 def matches_in_file(path, pattern):
     matches = []
     for line_number, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
-        match = pattern.search(line)
-        if match:
+        for match in pattern.finditer(line):
             matches.append((line_number, match))
     return matches
 
