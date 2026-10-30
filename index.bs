@@ -9,14 +9,15 @@ Status Text: Health-RI core metadata schema v2.1.0.
 Date: 2026-10-27
 </pre>
 
-<!-- Publication and repository PIDs -->
+<!-- Specification publication and documentation repository PIDs.
+     Previous Version and Version History are omitted until archived HTML
+     specifications and a specification history page have published URLs.
+     Model releases and SHACL sources are linked in the Permanent URLs chapter. -->
 <pre class='metadata'>
-TR: https://w3id.org/health-ri/metadata/releases/latest
+TR: https://w3id.org/health-ri/metadata/docs
 URL: https://w3id.org/health-ri/metadata/docs
 Canonical URL: https://w3id.org/health-ri/metadata/docs
-Version History: https://w3id.org/health-ri/metadata/releases
-Previous Version: https://w3id.org/health-ri/metadata/releases/v2.0.3
-Repository: https://w3id.org/health-ri/metadata/git
+Repository: https://w3id.org/health-ri/metadata/docs/git
 </pre>
 
 <!-- Abstract -->
