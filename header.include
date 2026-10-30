@@ -21,7 +21,8 @@
   <h2 id="profile-and-date" class="no-num no-toc no-ref">[LONGSTATUS],
     <time class="dt-updated" datetime="[ISODATE]">[DATE]</time></h2>
   <p class="spec-brand">
-    <img class="spec-logo" src="https://raw.githubusercontent.com/Health-RI/metadata-documentation/main/src/images/HRI_Logo.png" alt="Health-RI Logo" title="Health-RI Logo" width="450">
+    <img class="spec-logo spec-logo-blue" src="src/images/health-ri-logo-blue.png" alt="Health-RI Logo" title="Health-RI Logo" width="1008" height="205">
+    <img class="spec-logo spec-logo-white" src="src/images/health-ri-logo-white.png" alt="Health-RI Logo" title="Health-RI Logo" width="1008" height="205">
   </p>
   <div data-fill-with="spec-metadata"></div>
   <div data-fill-with="warning"></div>

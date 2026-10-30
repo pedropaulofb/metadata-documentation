@@ -56,6 +56,22 @@ body .head .spec-logo {
   width: 450px;
   max-width: 100%;
   height: auto;
+  background: transparent;
+}
+
+body .head .spec-logo-white {
+  display: none;
+}
+
+/* These rules also follow the Appearance selector's manual overrides. */
+@media (prefers-color-scheme: dark) {
+  body .head .spec-logo-blue {
+    display: none;
+  }
+
+  body .head .spec-logo-white {
+    display: block;
+  }
 }
 
 body .head .spec-appearance:not([hidden]) {
@@ -363,6 +379,14 @@ body #toc .toc li {
   body {
     color: #000;
     background: #fff;
+  }
+
+  body .head .spec-logo-blue {
+    display: block;
+  }
+
+  body .head .spec-logo-white {
+    display: none;
   }
 
   #spec-toc-resizer,
