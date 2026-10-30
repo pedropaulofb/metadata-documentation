@@ -353,6 +353,12 @@ The tables below list the relevant properties, the classes to which they apply, 
       </td>
       <td>Choose one of the named individuals of the <a href="http://spdx.org/rdf/terms#ChecksumAlgorithm"><code>spdx:ChecksumAlgorithm</code></a> class to indicate the algorithm used.</td>
     </tr>
+    <tr>
+      <td>dct:type</td>
+      <td>Activity</td>
+      <td><a href="https://hdeu-dcat.data.health.europa.eu/resource/authority/health-activity">Health Activity controlled vocabulary</a></td>
+      <td>Choose the type of Activity used to generate the Dataset from the Health Activity controlled vocabulary.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -450,6 +456,12 @@ The tables below list the relevant properties, the classes to which they apply, 
         <a href="https://vocabs.cbs.nl/nl/">https://vocabs.cbs.nl/nl/</a>
       </td>
       <td>For this property you can use controlled vocabularies depending on which best represents your dataset series. The EU provides three relevant authority tables - for continent, country, and place, with country codes aligned to ISO standards where applicable. Your choice depends on the granularity of the geographical coverage: for example, if your dataset series covers the entire Netherlands, you can use http://publications.europa.eu/resource/authority/country/NLD from the Country authority table, while for a specific city you should check the Place authority table. Since the Place table has limited coverage, you can also use GeoNames, a widely used geographical database with global coverage, or CBS vocabularies, which focus on places in the Netherlands. In general, prefer EU authority URIs first, then GeoNames, and finally national vocabularies for finer-grained locations.</td>
+    </tr>
+    <tr>
+      <td>csvw:datatype</td>
+      <td>Column</td>
+      <td><a href="https://w3c.github.io/csvw/metadata/#datatypes">CSVW built-in datatypes</a></td>
+      <td>Using a CSVW built-in datatype name (e.g., string, integer, boolean) is recommended when applicable.</td>
     </tr>
   </tbody>
 </table>
