@@ -14,5 +14,7 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
+      - name: Test version consistency checker
+        run: python3 -B -m unittest discover -s src/python/tests -p 'test_version_consistency.py' -v
       - name: Check version consistency
         run: python3 src/python/check_version_consistency.py

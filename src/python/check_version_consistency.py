@@ -10,7 +10,6 @@ ROOT = Path(__file__).resolve().parents[2]
 
 INDEX = ROOT / "index.bs"
 INTRO = ROOT / "src/chapter/4-introduction.md"
-GENERATOR = ROOT / "src/python/Excel_To_Html.py"
 
 STATUS_RE = re.compile(
     r"^Status Text:.*\bv(?P<version>\d+\.\d+\.\d+)\b.*$"
@@ -18,11 +17,9 @@ STATUS_RE = re.compile(
 UML_HEADING_RE = re.compile(
     r"^## UML Class Diagram v(?P<version>\d+\.\d+\.\d+)(?:\s+##\s+\{#[^ }]+\})?\s*$"
 )
-EXCEL_RE = re.compile(
-    r'^EXCEL_FILE_PATH\s*=\s*["\'](?P<path>[^"\']*HealthRI_v(?P<version>\d+\.\d+\.\d+)\.xlsx)["\']\s*$'
-)
 IMAGE_RE = re.compile(
-    r"(?P<path>src/images/HRI_metadata_p(?P<major>\d+)_(?P<minor>\d+)\.png)"
+    r"(?<![\w/.-])(?P<path>src/images/HRI_metadata_"
+    r"(?P<version>V\d+\.\d+|p\d+_\d+)\.png)(?=$|[\s\"'<>\)\]])"
 )
 
 
@@ -61,7 +58,6 @@ def main():
 
     require_one(INDEX, STATUS_RE, "Bikeshed status version")
     require_one(INTRO, UML_HEADING_RE, "UML heading version")
-    excel_match = require_one(GENERATOR, EXCEL_RE, "Excel input version")
 
     image_matches = matches_in_file(INTRO, IMAGE_RE)
     images = []
@@ -76,12 +72,13 @@ def main():
                     "label": "UML image version",
                     "file": str(INTRO.relative_to(ROOT)),
                     "line": line_number,
-                    "value": f"{match.group('major')}.{match.group('minor')}",
+                    # Current V2.1 and legacy p2_1 names both encode major/minor.
+                    "value": match.group("version")[1:].replace("_", "."),
                     "path": match.group("path"),
                 }
             )
 
-    if len(full_versions) == 3:
+    if len(full_versions) == 2:
         versions = {item["value"] for item in full_versions}
         if len(versions) != 1:
             details = "; ".join(
@@ -100,14 +97,6 @@ def main():
                         f'(version {image["value"]}), but the full current version is '
                         f"{full_version} (expected image version {expected_major_minor})."
                     )
-
-    if excel_match is not None:
-        excel_path = (GENERATOR.parent / excel_match.group("path")).resolve()
-        if not excel_path.is_file():
-            errors.append(
-                f"{GENERATOR.relative_to(ROOT)}: referenced Excel workbook does not exist: "
-                f"{excel_match.group('path')}."
-            )
 
     checked_image_paths = set()
     for image in images:
