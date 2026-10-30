@@ -126,7 +126,7 @@ body main > ul,
 body main > ol,
 body .p-summary {
   box-sizing: border-box;
-  max-width: 75ch;
+  max-width: 80ch;
 }
 
 body main h2 {
@@ -287,7 +287,7 @@ body #toc .toc li {
   body:not(.toc-inline) {
     max-width: none;
     margin: 0;
-    padding-left: calc(var(--spec-toc-width) + 2rem);
+    padding-left: calc(var(--spec-toc-width) + 3rem);
     padding-right: 2rem;
   }
 
