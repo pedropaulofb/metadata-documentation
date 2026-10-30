@@ -13,7 +13,7 @@
     <tr>
       <td>access service</td>
       <td>A data service that gives access to the distribution of the dataset.</td>
-      <td>dcat:accessService</td>
+      <td><a href="https://www.w3.org/TR/vocab-dcat/">dcat:accessService</a></td>
       <td>dcat:DataService</td>
       <td>0..1</td>
       <td>This property links the distribution class to the corresponding data service(s).</td>
@@ -21,7 +21,7 @@
     <tr>
       <td>access url</td>
       <td>A URL of the resource that gives access to a distribution of the dataset. E.g., landing page, feed, SPARQL endpoint.</td>
-      <td>dcat:accessURL</td>
+      <td><a href="https://www.w3.org/TR/vocab-dcat/">dcat:accessURL</a></td>
       <td>rdfs:Resource (IRI)</td>
       <td>1</td>
       <td>Add a link that points to where the dataset can be found. If it’s hosted in a Data Repository, include the link to its entry. For datasets not in a repository (like registries), but still available for secondary use, provide a link to an access request form or a webpage with instructions for accessing the data.</td>
@@ -109,7 +109,7 @@
     <tr>
       <td>license</td>
       <td>A legal document giving official permission to do something with the resource.</td>
-      <td>dct:license</td>
+      <td><a href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/">dct:license</a></td>
       <td>dct:LicenseDocument (IRI)</td>
       <td>1</td>
       <td>For public data, use a Creative Commons (CC) license (see Geonovum options in the Controlled Vocabulary column). For most National Health Data Catalogue distributions, where data is not public, use the 'not open' license from Geonovum and specify data reuse agreements in the dct:rights property.<br><br><strong>Controlled vocabulary</strong><br>The value for the property must be selected from the specified vocabulary or list.<br><br><a href="https://definities.geostandaarden.nl/dcat-ap-nl/nl/">https://definities.geostandaarden.nl/dcat-ap-nl/nl/</a><br></td>
@@ -128,7 +128,7 @@
       <td>dcat:mediaType</td>
       <td>dct:MediaType (IRI)</td>
       <td>0..1</td>
-      <td>Use the specified vocabularies, prioritizing IANA media types whenever possible. If unavailable, consider other ontologies, such as ZonMw generic terms, to describe the format. Example: https://www.iana.org/assignments/media-types/text/csv (for csv) If IANA media types do not sufficiently describe the format, use "format" to describe it in more detail.<br><br><strong>Controlled vocabulary</strong><br>The value for the property must be selected from the specified vocabulary or list.<br><br><a href="http://www.iana.org/assignments/media-types/media-types.xhtml">http://www.iana.org/assignments/media-types/media-types.xhtml</a><br></td>
+      <td><a href="https://www.iana.org/assignments/media-types/text/csv%20%20(for%20example,%20use%20this%20to%20describe%20a%20CSV%20file)">Use the specified vocabularies, prioritizing IANA media types whenever possible. If unavailable, consider other ontologies, such as ZonMw generic terms, to describe the format. Example: https://www.iana.org/assignments/media-types/text/csv (for csv) If IANA media types do not sufficiently describe the format, use "format" to describe it in more detail.</a><br><br><strong>Controlled vocabulary</strong><br>The value for the property must be selected from the specified vocabulary or list.<br><br><a href="http://www.iana.org/assignments/media-types/media-types.xhtml">http://www.iana.org/assignments/media-types/media-types.xhtml</a><br></td>
     </tr>
     <tr>
       <td>modification date</td>
@@ -149,7 +149,7 @@
     <tr>
       <td>release date</td>
       <td>Date of formal issuance of the resource.</td>
-      <td>dct:issued</td>
+      <td><a href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/">dct:issued</a></td>
       <td>xsd:dateTime</td>
       <td>0..1</td>
       <td>The date the dataset distribution was issued.</td>
@@ -165,7 +165,7 @@
     <tr>
       <td>rights</td>
       <td>Information about rights held in and over the resource.</td>
-      <td>dct:rights</td>
+      <td><a href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/">dct:rights</a></td>
       <td>dct:RightsStatement (IRI)</td>
       <td>0..1</td>
       <td>A statement that concerns all rights not addressed in fields License or Access rights. In case of not open data (as specified in the dct:licence property), further agreements regarding data reuse (e.g. Data Transfer Agreement, DTA) should be stated in this property. The rights statement should be a free-text statement placed at a web-accessible location such that the value of this property is the IRI pointing to that statement.</td>
@@ -181,7 +181,7 @@
     <tr>
       <td>temporal resolution</td>
       <td>Minimum time period resolvable in the dataset.</td>
-      <td>dcat:temporalResolution</td>
+      <td><a href="https://www.w3.org/TR/vocab-dcat/">dcat:temporalResolution</a></td>
       <td>xsd:duration</td>
       <td>0..1</td>
       <td>If applicable, this property indicates the minimum time period resolvable in the dataset distribution, expressed in xsd:duration format (see for more information here: <a href="https://www.w3schools.com/xml/schema_dtypes_date.asp">https://www.w3schools.com/xml/schema_dtypes_date.asp</a>)</td>

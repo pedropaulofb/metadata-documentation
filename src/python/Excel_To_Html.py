@@ -2,6 +2,7 @@ from pathlib import Path
 import pandas as pd
 import re
 import json
+from html import escape
 from openpyxl import load_workbook
 from urllib.parse import urlparse, urlunparse
 
@@ -28,7 +29,11 @@ def strip_urls(text):
 
 
 def make_clickable(url):
-    return f'<a href="{url}">{url}</a>'
+    return f'<a href="{escape(url, quote=True)}">{escape(url)}</a>'
+
+
+def make_cell_link(text, url):
+    return f'<a href="{escape(url, quote=True)}">{escape(str(text))}</a>'
 
 
 def normalize_url(url):
@@ -111,6 +116,7 @@ def extract_urls_per_property(sheet_name):
     uri_idx = headers.index("Property URI") + 1
 
     url_map = {}
+    cell_links = {}
 
     for row_idx in range(2, ws.max_row + 1):
         uri = ws.cell(row=row_idx, column=uri_idx).value
@@ -118,6 +124,16 @@ def extract_urls_per_property(sheet_name):
 
         if not uri:
             continue
+
+        cell_links[uri] = {
+            header: ws.cell(row=row_idx, column=idx + 1).hyperlink.target
+            for idx, header in enumerate(headers)
+            if header in {
+                "Property label", "Definition", "Property URI",
+                "Range", "Cardinality", "Usage note"
+            }
+            and ws.cell(row=row_idx, column=idx + 1).hyperlink
+        }
 
         urls = []
 
@@ -129,7 +145,7 @@ def extract_urls_per_property(sheet_name):
 
         url_map[uri] = urls
 
-    return url_map
+    return url_map, cell_links
 
 
 # ========================
@@ -189,18 +205,19 @@ def normalize_table_text(value):
       - Unix line breaks: \\n
       - Old Mac line breaks: \\r
       - Literal escaped sequences: \\\\n
+      - Tab characters: \\t
     """
     if not isinstance(value, str):
         return value
 
-    return re.sub(r"(?:\r\n|\r|\n|\\n)+", " ", value)
+    return re.sub(r"(?:\r\n|\r|\n|\\n|\t)+", " ", value)
 
 
 # ========================
 # FINAL USAGE NOTE
 # ========================
 
-def build_usage_note(row, sheet_name, url_map, links):
+def build_usage_note(row, sheet_name, url_map, links, cell_links=None):
 
     base = row["Usage note"]
     if not isinstance(base, str) or not base.strip():
@@ -208,6 +225,10 @@ def build_usage_note(row, sheet_name, url_map, links):
 
     vocab = row["Controlled vocabluary (if applicable)"]
     prop = row["Property URI"]
+
+    base_link = (cell_links or {}).get(prop, {}).get("Usage note")
+    if base_link:
+        base = make_cell_link(base, base_link)
 
     if not isinstance(vocab, str) or not vocab.strip():
         return base
@@ -348,7 +369,7 @@ def main():
 
         df = merge_vocab_rows(df)
 
-        url_map = extract_urls_per_property(
+        url_map, cell_links = extract_urls_per_property(
             sheet_name
         )
 
@@ -357,7 +378,8 @@ def main():
                 r,
                 sheet_name,
                 url_map,
-                links
+                links,
+                cell_links
             ),
             axis=1
         )
@@ -367,6 +389,11 @@ def main():
                 "Controlled vocabluary (if applicable)"
             ]
         )
+
+        for row_idx, row in df.iterrows():
+            for column, target in cell_links.get(row["Property URI"], {}).items():
+                if column != "Usage note":
+                    df.at[row_idx, column] = make_cell_link(row[column], target)
 
         # ============================================================
         # IMPORTANT:

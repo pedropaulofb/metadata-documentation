@@ -243,6 +243,7 @@
     "healthdcatap:publishertype|Agent": "MUST",
     "dct:type|Agent": "MUST",
 
+    "dcatap:availability|Distribution": "MUST",
     "dcat:compressFormat|Distribution": "MUST",
     "dct:format|Distribution": "MUST",
     "dct:language|Distribution": "MUST",

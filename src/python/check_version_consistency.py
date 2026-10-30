@@ -22,7 +22,7 @@ EXCEL_RE = re.compile(
     r'^EXCEL_FILE_PATH\s*=\s*["\'](?P<path>[^"\']*HealthRI_v(?P<version>\d+\.\d+\.\d+)\.xlsx)["\']\s*$'
 )
 IMAGE_RE = re.compile(
-    r"(?P<path>src/images/HRI_metadata_p(?P<major>\d+)_(?P<minor>\d+)\.png)"
+    r"(?P<path>src/images/HRI_metadata_V(?P<major>\d+)\.(?P<minor>\d+)\.png)"
 )
 
 
