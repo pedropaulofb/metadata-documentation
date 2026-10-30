@@ -22,6 +22,7 @@ Several classes from [DCAT-AP NL](https://docs.geostandaarden.nl/dcat/dcat-ap-nl
   </thead>
   <tbody>
     <tr><td>adms</td><td>http://www.w3.org/ns/adms#</td></tr>
+    <tr><td>csvw</td><td>http://www.w3.org/ns/csvw#</td></tr>
     <tr><td>dcat</td><td>http://www.w3.org/ns/dcat#</td></tr>
     <tr><td>dcatap</td><td>http://data.europa.eu/r5r/</td></tr>
     <tr><td>dct</td><td>http://purl.org/dc/terms/</td></tr>
@@ -31,7 +32,10 @@ Several classes from [DCAT-AP NL](https://docs.geostandaarden.nl/dcat/dcat-ap-nl
     <tr><td>edam</td><td>http://edamontology.org/</td></tr>
     <tr><td>eli</td><td>http://data.europa.eu/eli/ontology#</td></tr>
     <tr><td>foaf</td><td>http://xmlns.com/foaf/0.1/</td></tr>
+    <tr><td>hri</td><td>https://w3id.org/health-ri/metadata-vocabulary#</td></tr>
+    <tr><td>oa</td><td>http://www.w3.org/ns/oa#</td></tr>
     <tr><td>owl</td><td>http://www.w3.org/2002/07/owl#</td></tr>
+    <tr><td>prov</td><td>http://www.w3.org/ns/prov#</td></tr>
     <tr><td>rdf</td><td>http://www.w3.org/1999/02/22-rdf-syntax-ns#</td></tr>
     <tr><td>rdfs</td><td>http://www.w3.org/2000/01/rdf-schema#</td></tr>
     <tr><td>schema</td><td>http://schema.org/</td></tr>
