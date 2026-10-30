@@ -129,7 +129,7 @@ flowchart TD
     generatedTables --> validate
 
     validate --> pr["Open pull request targeting main"]
-    pr --> ciPr["GitHub Actions validation<br/>w3c/spec-prod"]
+    pr --> ciPr["GitHub Actions validation<br/>Bikeshed and versioned site build"]
 
     ciPr --> review{"Review outcome"}
     review -->|"Changes requested"| start
@@ -159,6 +159,16 @@ Build locally:
 bikeshed spec index.bs index.html
 ```
 
+To package the latest specification, its versioned snapshot, and archived
+specifications with their images, use Bikeshed 7.2.0 and run:
+
+```bash
+python src/python/build_specification_site.py
+```
+
+This creates a new `_site/` directory. See [versioned publication](releases/README.md)
+for output paths, snapshot provenance, and publication behavior.
+
 Dry-run (no output):
 
 ```bash
@@ -186,5 +196,5 @@ If changes are not visible:
 - check the GitHub Actions workflow runs and confirm they completed successfully  
 - verify that the changes were merged into the `main` branch  
 - check the `gh-pages` branch to confirm the updated content was deployed  
-- ensure that generated files (e.g. `index.html`) were included in the commit  
+- check that the `specification-site` build artifact contains `index.html` and the versioned `releases/` folder
 - refresh the page and clear your browser cache if necessary  

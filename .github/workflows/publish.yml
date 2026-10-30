@@ -1,22 +1,69 @@
-# This workflow converts your bikeshed (.bs) file to html and pushes to gh-pages
-
 name: CI
 
-# Controls when the action will run. Triggers the workflow on push or pull request
-# events but only for the main branch
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main, v2.1]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: specification-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
-  main:
-    name: Build, Validate and Deploy
+  build:
+    name: Build and Validate
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v2
-      - uses: w3c/spec-prod@v1
+      - uses: actions/checkout@v4
         with:
-          GH_PAGES_BRANCH: gh-pages
-          VALIDATE_LINKS: false
-          VALIDATE_MARKUP: false
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Bikeshed
+        run: python -m pip install bikeshed==7.2.0
+      - name: Test versioned publication
+        run: python -B -m unittest discover -s src/python/tests -p 'test_specification_site.py' -v
+      - name: Check version consistency
+        run: python src/python/check_version_consistency.py
+      - name: Read existing published snapshots
+        uses: actions/checkout@v4
+        with:
+          repository: Health-RI/metadata-documentation
+          ref: gh-pages
+          path: .published-site
+          sparse-checkout: releases
+          persist-credentials: false
+      - name: Build latest and versioned specifications
+        run: python src/python/build_specification_site.py --published-site .published-site
+      - uses: actions/upload-artifact@v4
+        with:
+          name: specification-site
+          path: _site/
+          include-hidden-files: true
+
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: build
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main' && github.repository == 'Health-RI/metadata-documentation'
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/download-artifact@v4
+        with:
+          name: specification-site
+          path: _site
+      - uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: _site
+          keep_files: true
