@@ -124,6 +124,32 @@ class SpecificationSiteTests(unittest.TestCase):
             self.build(published=True)
         self.assertFalse(self.output.exists())
 
+    def test_revision_only_difference_reuses_the_original_published_html(self):
+        self.html = f'<meta content="{"a" * 40}" name="revision">' + self.html
+        self.build()
+        original = (self.output / "index.html").read_bytes()
+        shutil.copytree(self.output / "releases", self.published / "releases")
+        shutil.rmtree(self.output)
+        self.html = self.html.replace("a" * 40, "b" * 40)
+        self.build(published=True)
+        self.assertEqual((self.output / "index.html").read_bytes(), original)
+        self.assertEqual(
+            (self.output / "releases/v2.1.0/index.html").read_bytes(), original
+        )
+        self.assertEqual(
+            (self.published / "releases/v2.1.0/index.html").read_bytes(), original
+        )
+
+    def test_revision_normalization_does_not_hide_document_changes(self):
+        self.html = f'<meta content="{"a" * 40}" name="revision">' + self.html
+        self.build()
+        shutil.copytree(self.output / "releases", self.published / "releases")
+        shutil.rmtree(self.output)
+        self.html = self.html.replace("a" * 40, "b" * 40) + "<p>Changed content</p>"
+        with self.assertRaisesRegex(ValueError, "Published snapshot v2.1.0 differs"):
+            self.build(published=True)
+        self.assertFalse(self.output.exists())
+
     def test_next_version_keeps_the_previous_current_snapshot(self):
         self.build()
         shutil.copytree(self.output / "releases", self.published / "releases")

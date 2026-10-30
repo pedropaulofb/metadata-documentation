@@ -12,6 +12,7 @@ from urllib.parse import unquote, urlsplit
 ROOT = Path(__file__).resolve().parents[2]
 DOCS_URL = "https://w3id.org/health-ri/metadata/docs"
 VERSION_RE = re.compile(r"v\d+\.\d+\.\d+")
+REVISION_META_RE = re.compile(rb'<meta content="[0-9a-f]{40}" name="revision">')
 
 
 class AssetReferences(HTMLParser):
@@ -79,11 +80,22 @@ def files_in(directory):
     }
 
 
-def same_snapshot(first, second):
+def same_snapshot(first, second, ignore_revision=False):
     left, right = files_in(first), files_in(second)
-    return left.keys() == right.keys() and all(
-        left[path].read_bytes() == right[path].read_bytes() for path in left
-    )
+    if left.keys() != right.keys():
+        return False
+    for path in left:
+        first_bytes, second_bytes = left[path].read_bytes(), right[path].read_bytes()
+        if ignore_revision and path == Path("index.html"):
+            first_bytes = REVISION_META_RE.sub(
+                b'<meta name="revision">', first_bytes, count=1
+            )
+            second_bytes = REVISION_META_RE.sub(
+                b'<meta name="revision">', second_bytes, count=1
+            )
+        if first_bytes != second_bytes:
+            return False
+    return True
 
 
 def copy_archives(source, destination):
@@ -154,11 +166,13 @@ def build_site(root, output, published_site=None, bikeshed="bikeshed"):
 
         snapshot = archives / current
         if snapshot.exists():
-            if not same_snapshot(rendered, snapshot):
+            if not same_snapshot(rendered, snapshot, ignore_revision=True):
                 raise ValueError(
                     f"Published snapshot {current} differs from this build. "
                     "Keep published snapshots unchanged and use a new document version."
                 )
+            # Reuse the published HTML, including its original source revision.
+            shutil.copyfile(snapshot / "index.html", rendered / "index.html")
         else:
             shutil.copytree(rendered, snapshot)
         shutil.copytree(rendered, staging, dirs_exist_ok=True)

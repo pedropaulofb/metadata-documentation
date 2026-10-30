@@ -52,7 +52,9 @@ python src/python/build_specification_site.py --published-site PATH_TO_PUBLISHED
 ```
 
 Existing version folders are retained byte-for-byte. Conflicting snapshots or a
-changed build of an already published version cause a failure. Publishing changed
+changed build of an already published version cause a failure. If only Bikeshed's
+Git revision metadata differs, the original published HTML is reused, including
+its original revision. Changes to document content or assets still fail. Publishing changed
 content requires a new documentation version and updated publication metadata;
 published snapshots must not be overwritten.
 
