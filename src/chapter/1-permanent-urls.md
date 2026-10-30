@@ -1,4 +1,5 @@
 # Permanent Urls # {#permanent-urls}
+
 To support long-term FAIR (Findable, Accessible, Interoperable, and Reusable) access to Health-RI Metadata Schema resources, we provide persistent URLs using the [W3ID](https://w3id.org/) system. These permanent identifiers improve the **findability** and **accessibility** of the related artifacts.
 The following links distinguish the published specification from the metadata model and its SHACL sources:
 

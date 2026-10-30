@@ -22,7 +22,7 @@ Repository: https://w3id.org/health-ri/metadata/docs/git
 
 <!-- Abstract -->
 <pre class='metadata'>
-Abstract: <img src="https://raw.githubusercontent.com/Health-RI/metadata-documentation/main/src/images/HRI_Logo.png" alt="Health-RI Logo" title="Health-RI Logo" width="300"> <br/> The National Health Data Catalogue uses a core metadata schema: a set of minimal, common metadata elements for describing each resource (e.g., a dataset). The schema defines metadata requirements that support access to and reuse of information across Health-RI nodes via the National Catalogue. This document provides the technical specification for the Health-RI core metadata schema.
+Abstract: The National Health Data Catalogue uses a core metadata schema: a set of minimal, common metadata elements for describing each resource (e.g., a dataset). The schema defines metadata requirements that support access to and reuse of information across Health-RI nodes via the National Catalogue. This document provides the technical specification for the Health-RI core metadata schema.
 </pre>
 
 <!-- Current editors: ORCID URLs are used as personal profile links. -->
@@ -59,7 +59,7 @@ Issue Tracking: Status reported issues https://github.com/Health-RI/health-ri-me
 
 <!-- Licence and rendering options -->
 <pre class='metadata'>
-Logo: health-ri logo
+Local Boilerplate: header yes
 !License: CC-BY-4.0
 Boilerplate: copyright no, conformance off, references off
 Max ToC Depth: 4
@@ -103,4 +103,13 @@ path: src/chapter/7-classes-supportive.md
 <!-- Controlled vocabularies -->
 <pre class=include>
 path: src/chapter/10-controlled-vocabularies.md
+</pre>
+
+<!-- Shared presentation and progressive layout enhancements -->
+<pre class=include>
+path: src/table/style-specification.md
+</pre>
+
+<pre class=include>
+path: src/table/script-specification.md
 </pre>
