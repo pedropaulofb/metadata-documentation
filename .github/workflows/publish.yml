@@ -9,14 +9,45 @@ on:
     branches: [ main ]
   pull_request:
     branches: [ main ]
+
+permissions:
+  contents: read
+
 jobs:
   main:
+    if: github.event_name == 'pull_request'
     name: Build, Validate and Deploy
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - uses: w3c/spec-prod@v1
         with:
           GH_PAGES_BRANCH: gh-pages
           VALIDATE_LINKS: false
           VALIDATE_MARKUP: false
+
+  publish:
+    name: Publish latest specification and saved versions
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main' && github.repository == 'Health-RI/metadata-documentation'
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: w3c/spec-prod@v1
+        with:
+          GH_PAGES_BRANCH: gh-pages
+          VALIDATE_LINKS: false
+          VALIDATE_MARKUP: false
+      - name: Prepare saved specifications and images
+        run: |
+          mkdir -p _site/src
+          cp -R releases _site/
+          cp -R src/images _site/src/
+      - name: Publish saved specifications and images
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: _site
+          keep_files: true

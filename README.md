@@ -74,6 +74,7 @@ Different parts of the specification are maintained in different locations.
 | Publication workflow | `.github/workflows/publish.yml` | No | GitHub Actions build and deploy process |
 | Documentation site (deployment) | `gh-pages` branch | Yes | Published documentation output |
 | Rendered HTML file | `index.html` | Yes | Generated output; do not edit manually |
+| Saved specification versions | `releases/vX.Y.Z/` | Yes | Commit each published HTML specification and its images here |
 | Repository overview | `README.md` | No | Maintainer documentation |
 
 ### Maintenance rules
@@ -181,10 +182,76 @@ The documentation is published at:
 
 https://health-ri.github.io/metadata-documentation/
 
+### Save each published specification
+
+Before publishing a version, save its generated HTML and required images in
+`releases/vX.Y.Z/` and commit that folder with the release. Keep previous version
+folders available when preparing the next version.
+
+Continue using the existing Excel-to-HTML and Bikeshed commands. For example,
+after v2.1.0 has been published, prepare v2.2.0 as follows:
+
+1. Update the workbook and related sources. Regenerate property tables when the
+   workbook changes, selecting the intended input explicitly:
+
+   ```bash
+   python src/python/Excel_To_Html.py --excel src/excel/your-workbook.xlsx
+   ```
+
+2. Update `index.bs`: set the new `Status Text` version and actual publication
+   `Date`; set `URL` and `Canonical URL` to
+   `https://w3id.org/health-ri/metadata/docs/v2.2.0`; and set `Previous Version` to
+   `https://w3id.org/health-ri/metadata/docs/v2.1.0`. Keep `TR` as
+   `https://w3id.org/health-ri/metadata/docs`. Keep the UML heading and diagram
+   reference consistent with the release version.
+
+3. Create `releases/v2.2.0/src/images/`, generate the HTML into that version's
+   `index.html`, and copy its images while preserving their relative paths.
+   This PowerShell example copies the image folder so the saved specification
+   does not depend on future changes to the current images:
+
+   ```powershell
+   New-Item -ItemType Directory -Force releases/v2.2.0/src/images | Out-Null
+   bikeshed spec index.bs releases/v2.2.0/index.html
+   Copy-Item src/images/* releases/v2.2.0/src/images/
+   ```
+
+4. Open the saved `index.html` and check its tables, links, and images. Commit the
+   saved version folder together with the source changes and regenerated property
+   tables. You may still generate a local preview with the usual command:
+
+   ```bash
+   bikeshed spec index.bs preview-v2.2.0.html
+   ```
+
+The workflow continues to generate the latest page with `w3c/spec-prod`. After a
+push to upstream `main`, an additional step copies the committed `releases/`
+folders and current `src/images/` to GitHub Pages, retaining existing site files.
+The workflow does not regenerate the saved version folders or the property
+tables. Regenerate the current version's saved HTML and recopy its images when
+finalizing the publication; generating a preview alone does not update it.
+
+The v2.1.0 snapshot included here retains the preview date in `index.bs`. Set the
+actual publication date and regenerate that snapshot before publishing v2.1.0.
+Version-specific documentation PIDs also require the separately proposed w3id
+redirects to be active. Their generic version rule needs no update for each
+future release.
+
+### Historical v2.0.3 snapshot
+
+The saved v2.0.3 HTML comes from the published `gh-pages` commit
+[`cb47a264dfb008d39bdb954bf5f70f21229ccfc0`](https://github.com/Health-RI/metadata-documentation/commit/cb47a264dfb008d39bdb954bf5f70f21229ccfc0),
+which identifies source commit
+[`8e0e7227fe33a8c716f3a15245888671db0d7126`](https://github.com/Health-RI/metadata-documentation/commit/8e0e7227fe33a8c716f3a15245888671db0d7126)
+as the v2.0.3 update. Its two images are copied unchanged from that source commit.
+The only HTML edits replace three references to those images on the changing
+`main` branch with local `images/` paths. Its original text, tables, publication
+metadata, styling, and 2 July 2026 publication date are preserved.
+
 If changes are not visible:
 
 - check the GitHub Actions workflow runs and confirm they completed successfully  
 - verify that the changes were merged into the `main` branch  
 - check the `gh-pages` branch to confirm the updated content was deployed  
-- ensure that generated files (e.g. `index.html`) were included in the commit  
+- check that the saved `releases/vX.Y.Z/index.html` and its images were committed
 - refresh the page and clear your browser cache if necessary  
